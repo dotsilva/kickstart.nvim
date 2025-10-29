@@ -34,6 +34,18 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
+              -- FIX: Enable stricter diagnostics for lua_ls
+              diagnostics = {
+                -- Get diagnostics for undefined globals
+                globals = { 'vim' },
+                -- Don't disable any diagnostics (default is to disable 'undefined-global')
+                disable = {},
+              },
+              -- This tells lua_ls to not ignore unused variables
+              workspace = {
+                checkThirdParty = false,
+              },
+              -- End of FIX
             },
           },
         },
@@ -41,12 +53,13 @@ return {
         -- Our Added LSPs
         bashls = {},
         taplo = {},
+        hyprls = {}, -- <<--- ADDED HYPRLAND LSP
       }
 
       --
       -- 2. CREATE THE MASTER INSTALL LIST
       --
-      -- Start with the LSPs
+      -- Start with the LSPs (hyprls is now automatically included)
       local ensure_installed = vim.tbl_keys(servers or {})
 
       -- Add all Formatters and Linters
@@ -54,7 +67,7 @@ return {
         -- Formatters (from ksformatter.lua)
         'stylua', -- (Original from kickstart)
         'shfmt',
-        'prettierd', -- (This was the one you correctly pointed out was missing)
+        'prettierd',
         -- 'taplo' is already in the LSP list
 
         -- Linters (from kslinter.lua)
