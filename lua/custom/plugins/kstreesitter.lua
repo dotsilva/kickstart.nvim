@@ -11,7 +11,6 @@ return {
       vim.list_extend(opts.ensure_installed, {
         'bash',
         'toml',
-        'ini',
         'hyprlang', -- <<--- ADD THIS LINE
       })
 
