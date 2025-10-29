@@ -8,20 +8,47 @@ return {
   -- 3. SNACKS (Corrected as per :checkhealth)
   {
     'folke/snacks.nvim',
-    lazy = false, -- <--- CORREÇÃO 1: (was 'event = VeryLazy')
-    priority = 1000, -- <--- CORREÇÃO 2: Added priority
+    lazy = false, -- <--- 1: (was 'event = VeryLazy')
+    priority = 1000, -- <--- 2: Added priority
     opts = {
       scroll = {
         enabled = false, -- Disable scrolling animations
       },
-      -- NOTA: O 'dashboard' do snacks não está habilitado.
-      -- Isso permite que o alpha-nvim funcione sem conflito.
     },
   },
   -- vertical line
   {
     'echasnovski/mini.indentscope',
     version = false, -- or it might have a version tag
+
+    -- This function disables the plugin for the listed filetypes/buftypes
+    enabled = function()
+      -- Set of filetypes to disable
+      local disabled_fts = {
+        help = true,
+        dashboard = true,
+        lazy = true,
+        mason = true,
+        NvimTree = true,
+        Trouble = true,
+      }
+
+      -- Set of buftypes to disable
+      local disabled_bts = {
+        terminal = true,
+        nofile = true,
+      }
+
+      -- If the current filetype or buftype is in the list, return 'false' (disabled)
+      if disabled_fts[vim.bo.filetype] or disabled_bts[vim.bo.buftype] then
+        return false
+      end
+
+      -- Otherwise, return 'true' (enabled)
+      return true
+    end,
+
+    -- Options for the plugin
     opts = {
       -- You can uncomment and change the symbol if you want
       symbol = '│',
@@ -29,45 +56,5 @@ return {
       -- Add this line to disable animation:
       draw = { animation = require('mini.indentscope').gen_animation.none() },
     },
-  },
-  -- alpha-nvim dashboard (Restored)
-  {
-    'goolord/alpha-nvim',
-    lazy = false,
-    config = function()
-      local alpha = require 'alpha'
-      local dashboard = require 'alpha.themes.dashboard'
-
-      dashboard.section.header.val = vim.split(
-        [[
-                                   .-----.          
-        .----------------------.   | === |          
-        |.-""""""""""""""""""-.|   |-----|          
-        ||                    ||   | === |          
-        ||   KICKSTART.NVIM   ||   |-----|          
-        ||                    ||   | === |          
-        ||                    ||   |-----|          
-        ||:Tutor              ||   |:::::|          
-        |'-..................-'|   |____o|          
-        `"")----------------(""`   ___________      
-       /::::::::::|  |::::::::::\  \ no mouse \     
-      /:::========|  |==hjkl==:::\  \ required \    
-     '""""""""""""'  '""""""""""""'  '""""""""""'   
-]],
-        '\n'
-      )
-
-      dashboard.section.buttons.val = {
-        dashboard.button('e', 'New file', ':ene <BAR> startinsert <CR>'),
-        dashboard.button('r', 'Recent files', ':Telescope oldfiles <CR>'),
-        dashboard.button('q', 'Quit Neovim', ':qa<CR>'),
-      }
-
-      dashboard.section.header.opts.hl = 'Type'
-      dashboard.section.buttons.opts.hl = 'Function'
-      dashboard.opts.layout[1].val = 2
-
-      alpha.setup(dashboard.config)
-    end,
   },
 }
