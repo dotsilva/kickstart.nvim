@@ -2,20 +2,20 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    -- Use a função opts para mesclar com a configuração padrão
+    -- Use the opts function to merge with the default config
     opts = function(_, opts)
-      -- Garante que a tabela exista
+      -- Ensure the table exists
       opts.ensure_installed = opts.ensure_installed or {}
 
-      -- Adiciona os parsers à lista de instalação
+      -- Add the parsers to the installation list
       vim.list_extend(opts.ensure_installed, {
         'bash',
         'toml',
         'ini',
-        'hyprlang', -- <<--- ADICIONE ESTA LINHA
+        'hyprlang', -- <<--- ADD THIS LINE
       })
 
-      -- Retorna a tabela 'opts' modificada
+      -- Return the modified 'opts' table
       return opts
     end,
   },
