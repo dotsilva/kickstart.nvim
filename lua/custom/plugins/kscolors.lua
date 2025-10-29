@@ -7,25 +7,26 @@ return {
 
   config = function()
     require('colorizer').setup {
-      -- 1. Os filetypes que você quer
+      -- 1. The filetypes you want
       filetypes = {
         'css',
         'scss',
         'toml',
         'yaml',
         'ini',
+        'hyprlang', -- <--- FIX APPLIED
         'javascript',
         'typescript',
       },
 
-      -- 2. A CORREÇÃO:
-      -- Precisamos re-definir as opções que foram perdidas
-      -- ao sobrescrever os 'filetypes'.
+      -- 2. THE FIX:
+      -- We need to re-define the options that were lost
+      -- when overriding 'filetypes'.
       user_default_options = {
-        -- Esta é a flag principal que habilita (rgb, rgba, hsl, etc.)
+        -- This is the main flag that enables (rgb, rgba, hsl, etc.)
         css = true,
 
-        -- Apenas para garantir, ativamos explicitamente também:
+        -- Just to be sure, we also explicitly enable:
         rgb_fn = true,
         names = true,
       },
