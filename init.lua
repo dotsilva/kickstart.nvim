@@ -124,8 +124,6 @@ vim.opt.shiftwidth = 2
 
 -- === OTHER GLOBAL OPTIONS (Examples) ===
 vim.opt.termguicolors = true
-vim.opt.number = true
-vim.opt.relativenumber = true
 --end of my vim options
 
 -- ===============================================
