@@ -18,7 +18,18 @@ return {
       -- Isso permite que o alpha-nvim funcione sem conflito.
     },
   },
-
+  -- vertical line
+  {
+    'echasnovski/mini.indentscope',
+    version = false, -- or it might have a version tag
+    opts = {
+      -- You can uncomment and change the symbol if you want
+      symbol = '│',
+      options = { try_as_border = true },
+      -- Add this line to disable animation:
+      draw = { animation = require('mini.indentscope').gen_animation.none() },
+    },
+  },
   -- alpha-nvim dashboard (Restored)
   {
     'goolord/alpha-nvim',
