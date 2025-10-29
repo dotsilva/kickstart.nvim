@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -109,7 +109,26 @@ vim.o.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
+--my vim options
+-- === GLOBAL INDENTATION OPTIONS (2 SPACES) ===
+-- These options must be set before loading plugins.
 
+-- 1. Ensures that the TAB character is expanded to spaces (ESSENTIAL).
+vim.opt.expandtab = true
+
+-- 2. Sets the width of a tabulation (tab key) to 2 spaces.
+vim.opt.tabstop = 2
+
+-- 3. Sets the size of an indentation (shift << and >>) to 2 spaces.
+vim.opt.shiftwidth = 2
+
+-- === OTHER GLOBAL OPTIONS (Examples) ===
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+--end of my vim options
+
+-- ===============================================
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -984,7 +1003,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
