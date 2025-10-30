@@ -69,10 +69,13 @@ return {
         'shfmt',
         'prettierd',
         -- 'taplo' is already in the LSP list
-
         -- Linters (from kslinter.lua)
         'luacheck',
         'shellcheck',
+        'stylelint', -- <--- NOVO
+        'jsonlint', -- <--- NOVO
+        'yamllint', -- <--- NOVO
+        'markdownlint',
       })
 
       --
