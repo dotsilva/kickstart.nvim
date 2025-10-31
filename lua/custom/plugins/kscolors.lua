@@ -14,7 +14,7 @@ return {
         'toml',
         'yaml',
         'ini',
-        'hyprlang', -- <--- FIX APPLIED
+        'hyprlang',
         'javascript',
         'typescript',
         'dosini',
