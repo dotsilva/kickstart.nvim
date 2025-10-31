@@ -19,6 +19,7 @@ return {
         'typescript',
         'dosini',
         'conf',
+        'jproperties',
       },
 
       -- 2. THE FIX:
