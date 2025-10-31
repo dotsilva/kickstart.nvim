@@ -6,6 +6,7 @@ return {
       formatters_by_ft = {
         -- Kickstart default
         lua = { 'stylua' },
+        zig = { 'zls' },
 
         -- Your formatters
         sh = { 'shfmt' },

@@ -1,4 +1,4 @@
--- lua/plugins/kstsitter.lua
+-- lua/plugins/kstreesitter.lua
 return {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -11,7 +11,8 @@ return {
       vim.list_extend(opts.ensure_installed, {
         'bash',
         'toml',
-        'hyprlang', -- <<--- ADD THIS LINE
+        'hyprlang',
+        'zig',
       })
 
       -- Return the modified 'opts' table

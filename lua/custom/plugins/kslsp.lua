@@ -53,13 +53,14 @@ return {
         -- Our Added LSPs
         bashls = {},
         taplo = {},
-        hyprls = {}, -- <<--- ADDED HYPRLAND LSP
+        hyprls = {},
+        zls = {},
       }
 
       --
       -- 2. CREATE THE MASTER INSTALL LIST
       --
-      -- Start with the LSPs (hyprls is now automatically included)
+      -- Start with the LSPs
       local ensure_installed = vim.tbl_keys(servers or {})
 
       -- Add all Formatters and Linters
@@ -68,13 +69,12 @@ return {
         'stylua', -- (Original from kickstart)
         'shfmt',
         'prettierd',
-        -- 'taplo' is already in the LSP list
         -- Linters (from kslinter.lua)
         'luacheck',
         'shellcheck',
-        'stylelint', -- <--- NOVO
-        'jsonlint', -- <--- NOVO
-        'yamllint', -- <--- NOVO
+        'stylelint',
+        'jsonlint',
+        'yamllint',
         'markdownlint',
       })
 
