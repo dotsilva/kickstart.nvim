@@ -17,6 +17,7 @@ return {
         'hyprlang', -- <--- FIX APPLIED
         'javascript',
         'typescript',
+        'ini',
       },
 
       -- 2. THE FIX:
@@ -28,7 +29,7 @@ return {
 
         -- Just to be sure, we also explicitly enable:
         rgb_fn = true,
-        names = true,
+        names = false,
       },
     }
   end,
