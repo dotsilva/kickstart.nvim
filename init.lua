@@ -185,7 +185,10 @@ vim.o.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-
+-- my keymaps
+-- terminal
+vim.keymap.set('n', '<leader>vt', ':vsp | terminal<CR>', { desc = 'Open terminal (vertical)' })
+-- end of my key maps
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
