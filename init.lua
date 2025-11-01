@@ -704,6 +704,7 @@ require('lazy').setup({
         taplo = {},
         hyprls = {},
         zls = {},
+        marksman = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -745,7 +746,6 @@ require('lazy').setup({
         'stylelint',
         'jsonlint',
         'yamllint',
-        'markdownlint-cli2',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -807,7 +807,6 @@ require('lazy').setup({
         json = { 'prettierd' },
         yaml = { 'prettierd' },
         markdown = { 'prettierd' },
-        md = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
