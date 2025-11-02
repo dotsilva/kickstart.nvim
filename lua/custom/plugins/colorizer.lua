@@ -20,6 +20,7 @@ return {
         'dosini',
         'conf',
         'jproperties',
+        'php',
       },
 
       -- 2. THE FIX:
