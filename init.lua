@@ -740,9 +740,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- formatters
-        'stylua', -- Lua
-        'shfmt', -- Bash
-        'prettierd', -- a bunch of langs
+        'stylua',
+        'shfmt',
+        'prettierd',
         -- linters
         'luacheck',
         'shellcheck',
