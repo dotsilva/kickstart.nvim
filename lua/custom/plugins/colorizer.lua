@@ -21,6 +21,8 @@ return {
         'conf',
         'jproperties',
         'php',
+        'eex',
+        'heex',
       },
 
       -- 2. THE FIX:

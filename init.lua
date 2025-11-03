@@ -706,8 +706,8 @@ require('lazy').setup({
         bashls = {},
         taplo = {},
         hyprls = {},
-        zls = {},
         marksman = {},
+        elixirls = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -801,7 +801,6 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        zig = { 'zls' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
         zsh = { 'shfmt' },
@@ -810,6 +809,9 @@ require('lazy').setup({
         json = { 'prettierd' },
         yaml = { 'prettierd' },
         markdown = { 'prettierd' },
+        elixir = { 'styler', 'elixirls' },
+        eex = { 'styler' },
+        heex = { 'styler' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -966,7 +968,6 @@ require('lazy').setup({
     opts = {
       ensure_installed = {
         'bash',
-        'zig',
         'diff',
         'hyprlang',
         'lua',
@@ -981,6 +982,9 @@ require('lazy').setup({
         'css',
         'ini',
         'toml',
+        'elixir',
+        'eex',
+        'heex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
