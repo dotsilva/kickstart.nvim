@@ -708,12 +708,16 @@ require('lazy').setup({
         hyprls = {},
         marksman = {},
         elixirls = {},
+        postgres_lsp = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
           -- capabilities = {},
           settings = {
             Lua = {
+              runtime = {
+                version = 'LuaJIT',
+              },
               completion = {
                 callSnippet = 'Replace',
               },
@@ -743,6 +747,7 @@ require('lazy').setup({
         'stylua',
         'shfmt',
         'prettierd',
+        'pgformatter',
         -- linters
         'luacheck',
         'shellcheck',
@@ -812,6 +817,7 @@ require('lazy').setup({
         elixir = { 'styler', 'elixirls' },
         eex = { 'styler' },
         heex = { 'styler' },
+        sql = { 'pgformatter' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -985,6 +991,7 @@ require('lazy').setup({
         'elixir',
         'eex',
         'heex',
+        'sql',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
