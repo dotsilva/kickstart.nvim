@@ -814,9 +814,9 @@ require('lazy').setup({
         json = { 'prettierd' },
         yaml = { 'prettierd' },
         markdown = { 'prettierd' },
-        elixir = { 'styler', 'elixirls' },
-        eex = { 'styler' },
-        heex = { 'styler' },
+        elixir = { 'mix', 'elixirls' },
+        eex = { 'mix' },
+        heex = { 'mix' },
         sql = { 'pgformatter' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
