@@ -492,6 +492,10 @@ require('lazy').setup({
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        -- LÖVE 2D API
+        { path = '${3rd}/love2d/library', words = { 'love' } },
+        -- ADD THIS LINE FOR OPENRESTY
+        { path = '${3rd}/OpenResty/library', words = { 'ngx' } },
       },
     },
   },
@@ -988,6 +992,7 @@ require('lazy').setup({
         'toml',
         'nim',
         'sql',
+        'nginx',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
