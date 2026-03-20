@@ -617,6 +617,11 @@ require('lazy').setup({
         bashls = {},
         html = { filetypes = { 'html', 'eruby' } },
         stylua = {}, -- Used to format Lua code
+        jsonls = {},
+        yamlls = {},
+        cssls = {},
+        taplo = {},
+        biome = {},
 
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
@@ -660,6 +665,8 @@ require('lazy').setup({
         -- You can add other tools here that you want Mason to install
         'rubocop',
         'shfmt',
+        'yamlfmt',
+        'erb-formatter',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -708,6 +715,13 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        ruby = { 'rubocop' },
+        eruby = { 'erb_format' },
+        json = { 'biome' },
+        jsonc = { 'biome' },
+        css = { 'biome' },
+        yaml = { 'yamlfmt' },
+        toml = { 'taplo' },
       },
     },
   },
@@ -896,6 +910,10 @@ require('lazy').setup({
         'embedded_template',
         'javascript',
         'css',
+        'json',
+        'jsonc',
+        'toml',
+        'yaml',
       }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
