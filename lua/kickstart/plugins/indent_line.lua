@@ -9,5 +9,12 @@ return {
   main = 'ibl',
   ---@module 'ibl'
   ---@type ibl.config
-  opts = {},
+  opts = {
+    scope = {
+      enabled = true,
+      show_start = true,
+      show_end = false,
+      show_exact_scope = true,
+    },
+  },
 }
