@@ -24,7 +24,7 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
+    'suketa/nvim-dap-ruby',
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
