@@ -78,6 +78,27 @@ return {
           ['@operator'] = { fg = c.mauve },
           ['@keyword'] = { fg = c.mauve, italic = true },
           ['@keyword.control'] = { fg = c.mauve, italic = true, bold = true },
+
+          -- git signs
+          -- Gethsemane (Green): Healthy states; additions; positive feedback (Exodus 27:20)
+          GitSignsAdd = { fg = c.green, bg = 'NONE' },
+          GitSignsAddLn = { fg = c.green, bg = 'NONE' },
+          GitSignsAddNr = { fg = c.green, bg = 'NONE' },
+
+          -- Poured Wine (Red): Critical alerts; deletions; high priority (Matthew 26:27-29)
+          GitSignsDelete = { fg = c.red, bg = 'NONE' },
+          GitSignsDeleteLn = { fg = c.red, bg = 'NONE' },
+          GitSignsDeleteNr = { fg = c.red, bg = 'NONE' },
+          GitSignsTopdelete = { fg = c.red, bg = 'NONE' },
+
+          -- Royal Sash (Yellow): Alerts; attention; mid priority; mid states (Revelation 1:13)
+          GitSignsChange = { fg = c.yellow, bg = 'NONE' },
+          GitSignsChangeLn = { fg = c.yellow, bg = 'NONE' },
+          GitSignsChangeNr = { fg = c.yellow, bg = 'NONE' },
+          GitSignsChangedelete = { fg = c.yellow, bg = 'NONE' },
+
+          -- Water of Life (Cyan): Visual anchors; active focus (Revelation 22:1)
+          GitSignsUntracked = { fg = c.teal, bg = 'NONE' },
         }
       end,
     },
