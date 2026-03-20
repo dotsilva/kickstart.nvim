@@ -1,0 +1,23 @@
+return {
+  "NvChad/nvim-colorizer.lua",
+  event = "LazyFile",
+  opts = {
+    filetypes = {
+      "css",
+      "scss",
+      "hyprlang",
+      "lua",
+      "yaml",
+      "toml",
+      "conf",
+      "json",
+      "dosini",
+    },
+
+    user_default_options = {
+      css = true,
+      rgb_fn = true,
+      names = false,
+    },
+  },
+}

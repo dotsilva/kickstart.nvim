@@ -1,0 +1,23 @@
+.
+├── doc
+│   ├── kickstart.txt
+│   └── tags
+├── init.lua
+├── kickstart.nvim.txt
+├── LICENSE.md
+├── lua
+│   ├── custom
+│   │   └── plugins
+│   │       └── init.lua
+│   └── kickstart
+│       ├── health.lua
+│       └── plugins
+│           ├── autopairs.lua
+│           ├── debug.lua
+│           ├── gitsigns.lua
+│           ├── indent_line.lua
+│           ├── lint.lua
+│           └── neo-tree.lua
+└── README.md
+
+7 directories, 14 files
