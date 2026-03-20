@@ -64,6 +64,10 @@ return {
           TelescopeBorder = { fg = c.surface0 },
           TelescopePromptBorder = { fg = c.teal },
           Comment = { fg = c.surface0, italic = true },
+
+          -- Replaced Snacks.nvim with mini.indentscope
+          IblScope = { fg = c.teal, bold = true },
+
           FlashLabel = { fg = c.base, bg = c.teal, bold = true },
           FlashMatch = { fg = c.text, bg = c.surface0 },
           FlashCurrent = { fg = c.base, bg = c.teal, bold = true },
@@ -79,13 +83,16 @@ return {
     },
     config = function(_, opts)
       require('catppuccin').setup(opts)
+      -- Kickstart does not automatically set the colorscheme like LazyVim does. You must explicitly call it here.
       vim.cmd.colorscheme 'catppuccin'
 
-      -- Native UI Overrides
+      -- Native UI Overrides previously handled by the LazyVim Core plugin
       vim.diagnostic.config { float = { border = 'single' } }
       vim.o.winborder = 'single'
     end,
   },
+
+  -- UI border overrides for plugins naturally loaded by Kickstart
   {
     'folke/which-key.nvim',
     opts = { win = { border = 'single' } },
