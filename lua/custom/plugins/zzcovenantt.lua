@@ -65,8 +65,8 @@ return {
           TelescopePromptBorder = { fg = c.teal },
           Comment = { fg = c.surface0, italic = true },
 
-          -- Replaced Snacks.nvim with mini.indentscope
-          IblScope = { fg = c.teal, bold = true },
+          -- Inside your custom_highlights function
+          MiniIndentscopeSymbol = { fg = c.teal },
 
           FlashLabel = { fg = c.base, bg = c.teal, bold = true },
           FlashMatch = { fg = c.text, bg = c.surface0 },

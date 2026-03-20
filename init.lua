@@ -855,6 +855,14 @@ require('lazy').setup({
   { -- Collection of various small independent plugins/modules
     'nvim-mini/mini.nvim',
     config = function()
+      require('mini.indentscope').setup {
+        symbol = '▎ ',
+        options = { try_as_border = true },
+        draw = {
+          delay = 0,
+          animation = require('mini.indentscope').gen_animation.none(), -- Instant render
+        },
+      }
       -- Better Around/Inside textobjects
       --
       -- Examples:
@@ -949,11 +957,11 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
+  -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
