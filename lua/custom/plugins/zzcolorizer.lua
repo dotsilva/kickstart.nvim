@@ -1,17 +1,17 @@
 return {
-  "NvChad/nvim-colorizer.lua",
-  event = "LazyFile",
+  'NvChad/nvim-colorizer.lua',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     filetypes = {
-      "css",
-      "scss",
-      "hyprlang",
-      "lua",
-      "yaml",
-      "toml",
-      "conf",
-      "json",
-      "dosini",
+      'css',
+      'scss',
+      'hyprlang',
+      'lua',
+      'yaml',
+      'toml',
+      'conf',
+      'json',
+      'dosini',
     },
 
     user_default_options = {
