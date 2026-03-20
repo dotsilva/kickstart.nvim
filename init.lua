@@ -911,7 +911,6 @@ require('lazy').setup({
         'javascript',
         'css',
         'json',
-        'jsonc',
         'toml',
         'yaml',
       }
