@@ -98,7 +98,9 @@ return {
           GitSignsChangedelete = { fg = c.yellow, bg = 'NONE' },
 
           -- Water of Life (Cyan): Visual anchors; active focus (Revelation 22:1)
-          GitSignsUntracked = { fg = c.teal, bg = 'NONE' },
+          GitSignsUntracked = { fg = c.surface0, bg = 'NONE' },
+          GitSignsUntrackedLn = { fg = c.surface0, bg = 'NONE' },
+          GitSignsUntrackedNr = { fg = c.surface0, bg = 'NONE' },
         }
       end,
     },
