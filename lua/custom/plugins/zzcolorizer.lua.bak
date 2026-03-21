@@ -17,6 +17,7 @@ return {
     user_default_options = {
       css = true,
       rgb_fn = true,
+      hsl_fn = true,
       names = false,
     },
   },
