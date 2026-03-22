@@ -18,14 +18,14 @@ return {
         base07 = '#C2AE93', -- broken_bread_1 (Lightest text)
 
         -- Semantics (8 strict ANSI equivalents)
-        base08 = '#B83E46', -- poured_wine_1 (Red / Errors / Deletions)
+        base08 = '#B83E46', -- poured_wine_1 (Red / Critical / Exit)
         base09 = '#DCAE3D', -- royal_sash_1  (Orange / Warnings)
-        base0A = '#DCAE3D', -- royal_sash_1  (Yellow / Classes)
-        base0B = '#838F46', -- gethsemane_1  (Green / Strings / Additions)
-        base0C = '#4AA893', -- water_of_life_1 (Cyan / Regex / Visual Anchors)
-        base0D = '#6C9FBF', -- first_day_1   (Blue / Functions)
-        base0E = '#8B476D', -- thorned_veil_1 (Magenta / Keywords)
-        base0F = '#B83E46', -- poured_wine_1 (Brown fallback to Red / Deprecated)
+        base0A = '#DCAE3D', -- royal_sash_1  (Yellow / Attention / Mid-state)
+        base0B = '#838F46', -- gethsemane_1  (Green / Healthy / Data)
+        base0C = '#4AA893', -- water_of_life_1 (Cyan / Ephemeral / Active)
+        base0D = '#6C9FBF', -- first_day_1   (Blue / Static / Types)
+        base0E = '#8B476D', -- thorned_veil_1 (Magenta / Wildcard)
+        base0F = '#B83E46', -- poured_wine_1 (Brown fallback to Red)
       }
 
       require('mini.base16').setup {
@@ -33,29 +33,81 @@ return {
         use_cterm = true,
       }
 
-      -- Enforce semantic rules bypassed by Base16 defaults to maintain your worldview
-      vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = palette.base0A, bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { fg = palette.base0A, bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'GitSignsChangeNr', { fg = palette.base0A, bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { fg = palette.base0A, bg = 'NONE' })
+      -- ==========================================
+      -- THE COVENANT SEMANTIC SYNTAX LOGIC
+      -- ==========================================
+
+      -- 1. White: Standard neutral generic labels & executable structure
+      vim.api.nvim_set_hl(0, '@variable', { fg = palette.base05 })
+      vim.api.nvim_set_hl(0, '@property', { fg = palette.base05 })
+      vim.api.nvim_set_hl(0, '@variable.member', { fg = palette.base05 })
+      vim.api.nvim_set_hl(0, '@operator', { fg = palette.base05 })
+      vim.api.nvim_set_hl(0, '@punctuation', { fg = palette.base05 })
+      vim.api.nvim_set_hl(0, '@constructor', { fg = palette.base05 })
+
+      -- 2. Black: Non-executable meta-text (Comments only)
+      vim.api.nvim_set_hl(0, '@comment', { fg = palette.base03 })
+      vim.api.nvim_set_hl(0, '@comment.documentation', { fg = palette.base03 })
+
+      -- 3. Red: Critical alerts / High priority / Flow Stoppers
+      vim.api.nvim_set_hl(0, '@keyword.return', { fg = palette.base08 })
+      vim.api.nvim_set_hl(0, '@keyword.exception', { fg = palette.base08 })
+      vim.api.nvim_set_hl(0, '@exception', { fg = palette.base08 })
+
+      -- 4. Yellow: Attention / Mid-priority / Logic Mid-states
+      vim.api.nvim_set_hl(0, '@keyword.conditional', { fg = palette.base0A })
+      vim.api.nvim_set_hl(0, '@keyword.repeat', { fg = palette.base0A })
+      vim.api.nvim_set_hl(0, '@keyword.import', { fg = palette.base0A })
+
+      -- 5. Cyan: Ephemeral neutral info / Active focus
+      vim.api.nvim_set_hl(0, '@function', { fg = palette.base0C })
+      vim.api.nvim_set_hl(0, '@function.call', { fg = palette.base0C })
+      vim.api.nvim_set_hl(0, '@parameter', { fg = palette.base0C })
+
+      -- 6. Blue: Static neutral information / Non-ephemeral
+      vim.api.nvim_set_hl(0, '@type', { fg = palette.base0D })
+      vim.api.nvim_set_hl(0, '@type.builtin', { fg = palette.base0D })
+      vim.api.nvim_set_hl(0, '@constant', { fg = palette.base0D })
+      vim.api.nvim_set_hl(0, '@constant.builtin', { fg = palette.base0D })
+
+      -- 7. Green: Healthy states / Instantiated Data
+      vim.api.nvim_set_hl(0, '@string', { fg = palette.base0B })
+      vim.api.nvim_set_hl(0, '@number', { fg = palette.base0B })
+      vim.api.nvim_set_hl(0, '@boolean', { fg = palette.base0B })
+
+      -- 8. Magenta: Extra / Wildcard
+      vim.api.nvim_set_hl(0, '@attribute', { fg = palette.base0E })
+      vim.api.nvim_set_hl(0, '@string.regexp', { fg = palette.base0E })
+      vim.api.nvim_set_hl(0, '@string.escape', { fg = palette.base0E })
+
+      -- ==========================================
+      -- UI OVERRIDES
+      -- ==========================================
+
+      -- Diagnostics & Git
+      vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = palette.base08 })
+      vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = palette.base0A })
+      vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = palette.base0D })
+      vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = palette.base0C })
+      vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { fg = palette.base0A, bg = palette.base01 })
       vim.api.nvim_set_hl(0, 'MiniDiffSignChange', { fg = palette.base0A, bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { fg = palette.base0C, bg = 'NONE' })
 
-      -- Native UI Overrides
+      -- Mason
+      vim.api.nvim_set_hl(0, 'MasonHeader', { fg = palette.base00, bg = palette.base0C })
+      vim.api.nvim_set_hl(0, 'MasonHighlight', { fg = palette.base0C })
+      vim.api.nvim_set_hl(0, 'MasonHighlightBlock', { fg = palette.base00, bg = palette.base0C })
+      vim.api.nvim_set_hl(0, 'MasonHighlightBlockBold', { fg = palette.base00, bg = palette.base0C, bold = true })
+      vim.api.nvim_set_hl(0, 'MasonMuted', { fg = palette.base03 })
+      vim.api.nvim_set_hl(0, 'MasonMutedBlock', { fg = palette.base03, bg = palette.base01 })
+      vim.api.nvim_set_hl(0, 'MasonWarning', { fg = palette.base0B })
+
+      -- Native Borders
       vim.diagnostic.config { float = { border = 'single' } }
       vim.o.winborder = 'single'
     end,
   },
 
   -- UI border overrides for Kickstart/Ecosystem plugins
-  { 'folke/which-key.nvim', opts = { win = { border = 'single' } } },
   { 'mason-org/mason.nvim', opts = { ui = { border = 'single' } } },
-  { 'nvim-telescope/telescope.nvim', opts = { defaults = { borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' } } } },
-  {
-    'saghen/blink.cmp',
-    opts = {
-      completion = { menu = { border = 'single' }, documentation = { window = { border = 'single' } } },
-      signature = { window = { border = 'single' } },
-    },
-  },
 }

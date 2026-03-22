@@ -11,6 +11,7 @@ return {
       markdown = { 'markdownlint' },
       ruby = { 'rubocop' },
       sh = { 'shellcheck' },
+      lua = { 'luacheck' },
     }
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,

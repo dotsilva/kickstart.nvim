@@ -21,7 +21,6 @@
 =====================================================================
 
 What is Kickstart?
-
   Kickstart.nvim is *not* a distribution.
 
   Kickstart.nvim is a starting point for your own configuration.
@@ -176,7 +175,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.diagnostic.config {
   update_in_insert = false,
   severity_sort = true,
-  float = { border = 'rounded', source = 'if_many' },
+  float = { border = 'single', source = 'if_many' },
   underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
   -- Can switch between these as you prefer
@@ -492,9 +491,12 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
         'rubocop',
-        'shfmt',
-        'yamlfmt',
         'erb-formatter',
+        'shfmt',
+        'shellcheck',
+        'luacheck',
+        'yamlfmt',
+        'markdownlint',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -545,6 +547,7 @@ require('lazy').setup({
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
         ruby = { 'rubocop' },
         eruby = { 'erb_format' },
+        sh = { 'shfmt' },
         json = { 'biome' },
         jsonc = { 'biome' },
         css = { 'biome' },
@@ -581,20 +584,13 @@ require('lazy').setup({
           --   end,
           -- },
         },
-        opts = {
-          completion = {
-            menu = { border = 'single' },
-            documentation = { window = { border = 'single' } },
-          },
-          signature = {
-            window = { border = 'single' },
-          },
-        },
+        opts = {},
       },
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
@@ -630,9 +626,15 @@ require('lazy').setup({
       },
 
       completion = {
+
+        menu = { border = 'single' },
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = {
+          auto_show = false,
+          auto_show_delay_ms = 500,
+          window = { border = 'single' },
+        },
       },
 
       sources = {
@@ -651,7 +653,7 @@ require('lazy').setup({
       fuzzy = { implementation = 'lua' },
 
       -- Shows a signature help window while you type arguments for a function
-      signature = { enabled = true },
+      signature = { enabled = true, window = { border = 'single' } },
     },
   },
 
@@ -798,6 +800,7 @@ require('lazy').setup({
   -- you can continue same window with `<space>sr` which resumes last telescope search
 }, { ---@diagnostic disable-line: missing-fields
   ui = {
+    border = 'single',
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
