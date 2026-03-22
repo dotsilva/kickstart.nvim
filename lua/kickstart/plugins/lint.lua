@@ -13,7 +13,18 @@ return {
       sh = { 'shellcheck' },
       lua = { 'luacheck' },
     }
-
+    -- Intercept luacheck and inject the global 'vim' rule directly into its CLI arguments
+    local luacheck = require('lint').linters.luacheck
+    luacheck.args = {
+      '--formatter',
+      'plain',
+      '--codes',
+      '--ranges',
+      '--globals',
+      'vim',
+      '-',
+    }
+    -- ========================
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
     -- instead set linters_by_ft like this:
     -- lint.linters_by_ft = lint.linters_by_ft or {}

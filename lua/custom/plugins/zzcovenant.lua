@@ -84,6 +84,12 @@ return {
       -- UI OVERRIDES
       -- ==========================================
 
+      -- Covenant Native Dashboard
+      vim.api.nvim_set_hl(0, 'CovenantDashboardVerse', { fg = palette.base08, bold = true }) -- Red (Critical)
+      vim.api.nvim_set_hl(0, 'CovenantDashboardTitle', { fg = palette.base0D, bold = true }) -- Blue (Neutral label)
+      vim.api.nvim_set_hl(0, 'CovenantDashboardSeparator', { fg = palette.base0E }) -- Magenta (Struct)
+      vim.api.nvim_set_hl(0, 'CovenantDashboardPath', { fg = palette.base05 }) -- White (Standard file)
+
       -- Diagnostics & Git
       vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = palette.base08 })
       vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = palette.base0A })
@@ -95,7 +101,7 @@ return {
 
       -- Mason
       vim.api.nvim_set_hl(0, 'MasonHeader', { fg = palette.base00, bg = palette.base0C })
-      vim.api.nvim_set_hl(0, 'MasonHighlight', { fg = palette.base0C })
+      vim.api.nvim_set_hl(0, 'MasonHighlight', { fg = palette.base0B })
       vim.api.nvim_set_hl(0, 'MasonHighlightBlock', { fg = palette.base00, bg = palette.base0C })
       vim.api.nvim_set_hl(0, 'MasonHighlightBlockBold', { fg = palette.base00, bg = palette.base0C, bold = true })
       vim.api.nvim_set_hl(0, 'MasonMuted', { fg = palette.base03 })
@@ -103,6 +109,7 @@ return {
       vim.api.nvim_set_hl(0, 'MasonWarning', { fg = palette.base0B })
 
       -- Native Borders
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = palette.base0C, bg = 'NONE' })
       vim.diagnostic.config { float = { border = 'single' } }
       vim.o.winborder = 'single'
     end,

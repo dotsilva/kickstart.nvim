@@ -14,7 +14,5 @@ return {
       use_as_default_explorer = true,
     },
   },
-  config = function(_, opts)
-    require('mini.files').setup(opts)
-  end,
+  config = function(_, opts) require('mini.files').setup(opts) end,
 }
