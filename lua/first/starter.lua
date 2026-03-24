@@ -142,6 +142,3 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end) -- end of vim.schedule
   end,
 })
-
--- Satisfy lazy.nvim's requirement to return a table
-return {}

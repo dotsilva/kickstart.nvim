@@ -1,7 +1,5 @@
--- Linting
+-- lua/custom/plugins/lint.lua
 
----@module 'lazy'
----@type LazySpec
 return {
   'mfussenegger/nvim-lint',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -13,6 +11,7 @@ return {
       sh = { 'shellcheck' },
       lua = { 'luacheck' },
     }
+
     -- Intercept luacheck and inject the global 'vim' rule directly into its CLI arguments
     local luacheck = require('lint').linters.luacheck
     luacheck.args = {
@@ -24,6 +23,7 @@ return {
       'vim',
       '-',
     }
+
     -- ========================
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
     -- instead set linters_by_ft like this:

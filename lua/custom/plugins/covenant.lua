@@ -32,11 +32,7 @@ return {
         palette = palette,
         use_cterm = true,
       }
-
-      -- ==========================================
-      -- THE COVENANT SEMANTIC SYNTAX LOGIC
-      -- ==========================================
-
+-- SYNTAX LOGIC
       -- 1. White: Standard neutral generic labels & executable structure
       vim.api.nvim_set_hl(0, '@variable', { fg = palette.base05 })
       vim.api.nvim_set_hl(0, '@property', { fg = palette.base05 })
@@ -80,10 +76,7 @@ return {
       vim.api.nvim_set_hl(0, '@string.regexp', { fg = palette.base0E })
       vim.api.nvim_set_hl(0, '@string.escape', { fg = palette.base0E })
 
-      -- ==========================================
       -- UI OVERRIDES
-      -- ==========================================
-
       -- Covenant Native Dashboard
       vim.api.nvim_set_hl(0, 'CovenantDashboardVerse', { fg = palette.base08, bold = true }) -- Red (Critical)
       vim.api.nvim_set_hl(0, 'CovenantDashboardTitle', { fg = palette.base0D, bold = true }) -- Blue (Neutral label)
@@ -114,7 +107,4 @@ return {
       vim.o.winborder = 'single'
     end,
   },
-
-  -- UI border overrides for Kickstart/Ecosystem plugins
-  { 'mason-org/mason.nvim', opts = { ui = { border = 'single' } } },
-}
+  }

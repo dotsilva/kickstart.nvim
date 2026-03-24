@@ -1,4 +1,4 @@
--- debug.lua
+-- lua/custom/plugins/debug.lua
 --
 -- Shows how to use the DAP plugin to debug your code.
 --
