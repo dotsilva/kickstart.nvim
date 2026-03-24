@@ -1,0 +1,2 @@
+here i save usefull kickstart.nvim original files
+for documentation purposes
