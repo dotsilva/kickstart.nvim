@@ -1,9 +1,6 @@
---[[
---
--- This file is not required for your own configuration,
--- but helps people determine if their system is setup correctly.
---
---]]
+-- lua/config/health.lua
+
+-- ":checkhealth" to verify if your environment is ok
 
 local check_version = function()
   local verstr = tostring(vim.version())

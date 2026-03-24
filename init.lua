@@ -9,7 +9,7 @@ vim.g.maplocalleader = ' '
 require 'config.options'
 require 'config.keymaps'
 require 'config.autocmds'
-require 'config.starter'
+require 'config.dashboard'
 require 'config.health'
 
 -- 3. Bootstrap lazy.nvim

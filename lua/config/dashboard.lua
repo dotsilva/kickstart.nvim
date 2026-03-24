@@ -1,6 +1,5 @@
--- ==========================================
--- THE COVENANT NATIVE DASHBOARD
--- ==========================================
+-- lua/config/dashboard.lua
+
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     -- Only show the dashboard if Neovim is opened without a specific file
