@@ -6,11 +6,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- 2. Load the foundational layer (Priority logic and UI)
-require 'first.options'
-require 'first.keymaps'
-require 'first.autocmds'
-require 'first.starter'
-require 'first.health'
+require 'config.options'
+require 'config.keymaps'
+require 'config.autocmds'
+require 'config.starter'
+require 'config.health'
 
 -- 3. Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -24,11 +24,11 @@ vim.opt.rtp:prepend(lazypath)
 -- 4. Execute the package manager
 require('lazy').setup({
   -- Automatically sweep and load everything in lua/custom/plugins/
-  { import = 'lazy-plugins' },
+  { import = 'plugins' },
 }, {
   ui = {
     border = 'single',
-    -- Evaluates vim.g.have_nerd_font (which you will define in first.options)
+    -- Evaluates vim.g.have_nerd_font (which you will define in config.options)
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
