@@ -10,6 +10,7 @@ require 'first.options'
 require 'first.keymaps'
 require 'first.autocmds'
 require 'first.starter'
+require 'first.health'
 
 -- 3. Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -23,7 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 -- 4. Execute the package manager
 require('lazy').setup({
   -- Automatically sweep and load everything in lua/custom/plugins/
-  { import = 'custom.plugins' },
+  { import = 'lazy-plugins' },
 }, {
   ui = {
     border = 'single',
