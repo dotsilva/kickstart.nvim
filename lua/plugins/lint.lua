@@ -1,5 +1,3 @@
--- lua/custom/plugins/lint.lua
-
 return {
   'mfussenegger/nvim-lint',
   event = { 'BufReadPre', 'BufNewFile' },

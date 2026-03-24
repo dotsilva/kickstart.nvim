@@ -1,5 +1,3 @@
--- lua/custom/plugins/completion.lua
-
 return {
   'saghen/blink.cmp',
   event = 'VimEnter',
