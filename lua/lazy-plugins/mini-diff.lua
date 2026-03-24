@@ -21,7 +21,5 @@ return {
       goto_last = ']H',
     },
   },
-  config = function(_, opts)
-    require('mini.diff').setup(opts)
-  end,
+  config = function(_, opts) require('mini.diff').setup(opts) end,
 }

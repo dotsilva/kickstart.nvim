@@ -8,7 +8,5 @@ return {
     skip_unbalanced = true,
     markdown = true,
   },
-  config = function(_, opts)
-    require('mini.pairs').setup(opts)
-  end,
+  config = function(_, opts) require('mini.pairs').setup(opts) end,
 }

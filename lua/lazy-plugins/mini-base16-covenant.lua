@@ -32,7 +32,7 @@ return {
         palette = palette,
         use_cterm = true,
       }
--- SYNTAX LOGIC
+      -- SYNTAX LOGIC
       -- 1. White: Standard neutral generic labels & executable structure
       vim.api.nvim_set_hl(0, '@variable', { fg = palette.base05 })
       vim.api.nvim_set_hl(0, '@property', { fg = palette.base05 })
@@ -107,4 +107,4 @@ return {
       vim.o.winborder = 'single'
     end,
   },
-  }
+}

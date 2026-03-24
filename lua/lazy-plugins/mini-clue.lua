@@ -2,8 +2,8 @@ return {
   'nvim-mini/mini.clue',
   event = 'VeryLazy',
   config = function()
-    local miniclue = require('mini.clue')
-    miniclue.setup({
+    local miniclue = require 'mini.clue'
+    miniclue.setup {
       triggers = {
         { mode = 'n', keys = '<Leader>' },
         { mode = 'x', keys = '<Leader>' },
@@ -42,6 +42,6 @@ return {
         config = { border = 'single' },
         delay = 0,
       },
-    })
+    }
   end,
 }
