@@ -7,7 +7,8 @@ return {
       options = { try_as_border = true },
       draw = {
         delay = 0,
-        animation = require('mini.indentscope').gen_animation.none(), -- Instant render
+        -- Instant render
+        animation = require('mini.indentscope').gen_animation.none(),
       },
     }
     -- Better Around/Inside textobjects
