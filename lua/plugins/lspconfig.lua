@@ -1,5 +1,3 @@
--- lua/custom/plugins/lsp.lua
-
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
