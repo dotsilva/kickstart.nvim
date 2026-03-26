@@ -17,14 +17,14 @@ return {
       base07 = '#CEBA9F', -- broken_bread_1 (Lightest text)
 
       -- Semantics (Accents)
-      base08 = '#D0565E', -- poured_wine_1 (Red / Critical / Exit)
-      base09 = '#F4C655', -- royal_sash_1  (Orange / Warnings)
-      base0A = '#F4C655', -- royal_sash_1  (Yellow / Attention / Mid-state)
-      base0B = '#9BA75E', -- gethsemane_1  (Green / Healthy / Data)
-      base0C = '#56B49F', -- water_of_life_1 (Cyan / Ephemeral / Active)
+      base08 = '#B83E46', -- poured_wine_1 (Red / Critical / Exit)
+      base09 = '#D0A231', -- royal_sash_1  (Orange / Warnings)
+      base0A = '#D0A231', -- royal_sash_1  (Yellow / Attention / Mid-state)
+      base0B = '#838F46', -- gethsemane_1  (Green / Healthy / Data)
+      base0C = '#3E9C87', -- water_of_life_1 (Cyan / Ephemeral / Active)
       base0D = '#487B9B', -- first_day_1   (Blue / Static / Types)
       base0E = '#975379', -- thorned_veil_1 (Magenta / Wildcard)
-      base0F = '#D0565E', -- poured_wine_1 (Brown fallback to Red)
+      base0F = '#B83E46', -- poured_wine_1 (Brown fallback to Red)
     }
 
     require('mini.base16').setup {
