@@ -6,25 +6,25 @@ return {
     local palette = {
       -- Background & UI (Darkness scale)
       base00 = '#0C0C0C', -- darkness_6 (Main background)
-      base01 = '#181818', -- darkness_5 (Lighter background/Statusline)
-      base02 = '#303030', -- darkness_3 (Selection/Hover)
-      base03 = '#484848', -- darkness_1 (Comments/Line numbers)
+      base01 = '#242424', -- darkness_4 (Lighter background/Statusline)
+      base02 = '#3C3C3C', -- darkness_2 (Selection/Hover)
+      base03 = '#545454', -- darkness_0 (Comments/Line numbers)
 
       -- Foreground (Broken Bread scale)
-      base04 = '#8A7C6B', -- broken_bread_4 (Dark text)
-      base05 = '#C2AE93', -- broken_bread_1 (Main text)
-      base06 = '#C2AE93', -- broken_bread_1 (Light text)
-      base07 = '#C2AE93', -- broken_bread_1 (Lightest text)
+      base04 = '#AA967B', -- broken_bread_4 (Dark text)
+      base05 = '#CEBA9F', -- broken_bread_1 (Main text)
+      base06 = '#CEBA9F', -- broken_bread_1 (Light text)
+      base07 = '#CEBA9F', -- broken_bread_1 (Lightest text)
 
-      -- Semantics (8 strict ANSI equivalents)
-      base08 = '#B83E46', -- poured_wine_1 (Red / Critical / Exit)
-      base09 = '#DCAE3D', -- royal_sash_1  (Orange / Warnings)
-      base0A = '#DCAE3D', -- royal_sash_1  (Yellow / Attention / Mid-state)
-      base0B = '#838F46', -- gethsemane_1  (Green / Healthy / Data)
-      base0C = '#4AA893', -- water_of_life_1 (Cyan / Ephemeral / Active)
-      base0D = '#6C9FBF', -- first_day_1   (Blue / Static / Types)
-      base0E = '#8B476D', -- thorned_veil_1 (Magenta / Wildcard)
-      base0F = '#B83E46', -- poured_wine_1 (Brown fallback to Red)
+      -- Semantics (Accents)
+      base08 = '#D0565E', -- poured_wine_1 (Red / Critical / Exit)
+      base09 = '#F4C655', -- royal_sash_1  (Orange / Warnings)
+      base0A = '#F4C655', -- royal_sash_1  (Yellow / Attention / Mid-state)
+      base0B = '#9BA75E', -- gethsemane_1  (Green / Healthy / Data)
+      base0C = '#56B49F', -- water_of_life_1 (Cyan / Ephemeral / Active)
+      base0D = '#487B9B', -- first_day_1   (Blue / Static / Types)
+      base0E = '#975379', -- thorned_veil_1 (Magenta / Wildcard)
+      base0F = '#D0565E', -- poured_wine_1 (Brown fallback to Red)
     }
 
     require('mini.base16').setup {
@@ -104,5 +104,12 @@ return {
     vim.api.nvim_set_hl(0, 'FloatBorder', { fg = palette.base0C, bg = 'NONE' })
     vim.diagnostic.config { float = { border = 'single' } }
     vim.o.winborder = 'single'
+
+    -- Statusline Modes (Strictly variant_3 to reserve variant_1 for code)
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { fg = '#0C0C0C', bg = '#9C8C78', bold = true }) -- broken_bread_3
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { fg = '#0C0C0C', bg = '#AC862F', bold = true }) -- royal_sash_3
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { fg = '#0C0C0C', bg = '#3A8273', bold = true }) -- water_of_life_3
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { fg = '#0C0C0C', bg = '#8B2F35', bold = true }) -- poured_wine_3
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeOther', { fg = '#0C0C0C', bg = '#6F3957', bold = true }) -- thorned_veil_3 (Fallback)
   end,
 }
