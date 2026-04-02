@@ -78,8 +78,8 @@ return {
     }
 
     -- Covenant Breakpoint Colors (Using TJ's full state machine)
-    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#B83E46' }) -- Covenant Red
-    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#DCAE3D' }) -- Covenant Yellow
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#F34E4E' }) -- Covenant Red
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#cfcf2a' }) -- Covenant Yellow
 
     local breakpoint_icons = vim.g.have_nerd_font
         and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }

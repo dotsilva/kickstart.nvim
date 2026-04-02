@@ -10,7 +10,7 @@ return {
       local g = tonumber(hex:sub(4, 5), 16)
       local b = tonumber(hex:sub(6, 7), 16)
       -- Standard relative luminance math
-      return (0.299 * r + 0.587 * g + 0.114 * b) > 128 and '#0C0C0C' or '#F0EBE1'
+      return (0.299 * r + 0.587 * g + 0.114 * b) > 128 and '#1e1e1e' or '#dbdbdb'
     end
 
     -- RGB/RGBA Parser (Extracts the first 3 numbers, ignores the alpha if present)
@@ -18,12 +18,12 @@ return {
       local r, g, b = match:match 'rgba?%(%s*(%d+)%s*,%s*(%d+)%s*,%s*(%d+)'
       if not r then return nil end
 
-      r, g, b = math.min(tonumber(r), 255), math.min(tonumber(g), 255), math.min(tonumber(b), 255)
-      local hex = string.format('#%02x%02x%02x', r, g, b)
-      local group = 'MiniHipatternsRGB_' .. hex:sub(2)
+      r = math.min(tonumber(r), 255)
+      g = math.min(tonumber(g), 255)
+      b = math.min(tonumber(b), 255)
 
-      vim.api.nvim_set_hl(0, group, { bg = hex, fg = get_fg(hex) })
-      return group
+      local hex = string.format('#%02x%02x%02x', r, g, b)
+      return require('mini.hipatterns').compute_hex_color_group(hex, 'bg')
     end
 
     -- HSL/HSLA Parser (Extracts Hue, Sat %, Light %, converts to RGB, then to Hex)
@@ -59,10 +59,7 @@ return {
       local B = math.floor((b + m) * 255 + 0.5)
 
       local hex = string.format('#%02x%02x%02x', R, G, B)
-      local group = 'MiniHipatternsHSL_' .. hex:sub(2)
-
-      vim.api.nvim_set_hl(0, group, { bg = hex, fg = get_fg(hex) })
-      return group
+      return require('mini.hipatterns').compute_hex_color_group(hex, 'bg')
     end
 
     return {
@@ -87,10 +84,10 @@ return {
     vim.opt.termguicolors = true
 
     -- Enforce Covenant Base16 colors for your semantic tags
-    vim.api.nvim_set_hl(0, 'MiniHipatternsFixme', { fg = '#0C0C0C', bg = '#B83E46', bold = true }) -- Red
-    vim.api.nvim_set_hl(0, 'MiniHipatternsHack', { fg = '#0C0C0C', bg = '#DCAE3D', bold = true }) -- Yellow
-    vim.api.nvim_set_hl(0, 'MiniHipatternsTodo', { fg = '#0C0C0C', bg = '#4AA893', bold = true }) -- Cyan
-    vim.api.nvim_set_hl(0, 'MiniHipatternsNote', { fg = '#0C0C0C', bg = '#6C9FBF', bold = true }) -- Blue
+    vim.api.nvim_set_hl(0, 'MiniHipatternsFixme', { fg = '#0C0C0C', bg = '#F34E4E', bold = true }) -- Red
+    vim.api.nvim_set_hl(0, 'MiniHipatternsHack', { fg = '#0C0C0C', bg = '#cfcf2a', bold = true }) -- Yellow
+    vim.api.nvim_set_hl(0, 'MiniHipatternsTodo', { fg = '#0C0C0C', bg = '#38d5d5', bold = true }) -- Cyan
+    vim.api.nvim_set_hl(0, 'MiniHipatternsNote', { fg = '#0C0C0C', bg = '#7e7eff', bold = true }) -- Blue
 
     require('mini.hipatterns').setup(opts)
   end,
