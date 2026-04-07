@@ -2,10 +2,10 @@
 -- Enforces the 8-Color Execution Risk Hierarchy.
 -- UI is strictly monochromatic. Code is colored by runtime topography.
 
-local function apply_base10()
+local function apply_cromanomy()
   vim.cmd 'hi clear'
   if vim.fn.exists 'syntax_on' then vim.cmd 'syntax reset' end
-  vim.g.colors_name = 'base10'
+  vim.g.colors_name = 'cromanomy'
 
   local p = {
     bg_main = '#1e1e1e',
@@ -343,4 +343,4 @@ local function apply_base10()
   vim.g.terminal_color_15 = p.white
 end
 
-apply_base10()
+apply_cromanomy()

@@ -7,7 +7,6 @@ return {
     local parsers = {
       'awk',
       'bash',
-      'c',
       'css',
       'diff',
       'dockerfile',
@@ -28,7 +27,6 @@ return {
       'json',
       'lua',
       'luadoc',
-      'make',
       'markdown',
       'markdown_inline',
       'nginx',
@@ -44,7 +42,6 @@ return {
       'xcompose',
       'xml',
       'yaml',
-      'zig',
     }
     require('nvim-treesitter').install(parsers)
     vim.api.nvim_create_autocmd('FileType', {
