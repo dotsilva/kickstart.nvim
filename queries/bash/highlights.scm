@@ -1,6 +1,29 @@
 ;; queries/bash/highlights.scm
 ;; extends
 
+;; BLUE
+;; Punctuation
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+  "[["
+  "]]"
+  "(("
+  "))"
+] @punctuation.bracket
+
+[
+  ";"
+  ";;"
+  ";&"
+  ";;&"
+  "&"
+] @punctuation.delimiter
+
 ;; GREEN: Triggers & Mutations
 (command_name (word) @function.builtin)
 
@@ -88,6 +111,9 @@
 ;; Shell Flags
 (command argument: (word) @keyword.modifier (#lua-match? @keyword.modifier "^%-"))
 
+;; Test operators inside [[ ]] and [ ] (e.g., -f, -z, -d)
+(test_operator) @keyword.modifier
+
 ;; Assignment
 [ "=" "+=" ] @keyword.modifier
 (variable_assignment "=" @keyword.modifier)
@@ -95,28 +121,6 @@
 
 ;; Heredoc boundaries
 [ (heredoc_start) (heredoc_end) ] @keyword.function
-
-;; Punctuation
-[
-  "("
-  ")"
-  "{"
-  "}"
-  "["
-  "]"
-  "[["
-  "]]"
-  "(("
-  "))"
-] @punctuation.bracket
-
-[
-  ";"
-  ";;"
-  ";&"
-  ";;&"
-  "&"
-] @punctuation.delimiter
 
 ;; CYAN: Ephemeral State
 (special_variable_name) @variable.builtin
@@ -144,6 +148,3 @@
 
 ;; MAGENTA: Exceptional Data
 [ (regex) (extglob_pattern) ] @string.regexp
-
-((variable_name) @constant.builtin
-  (#lua-match? @constant.builtin "^[A-Z][A-Z_0-9]*$"))
