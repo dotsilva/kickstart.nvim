@@ -95,15 +95,15 @@ local function apply_cromanomy()
   hi('Number', { fg = p.white })
   hi('Float', { fg = p.white })
   hi('Boolean', { fg = p.magenta })
-  hi('Constant', { fg = p.magenta })
+  hi('Constant', { fg = p.blue })
   hi('Identifier', { fg = p.cyan })
   hi('Function', { fg = p.blue })
-  hi('Statement', { fg = p.white })
+  hi('Statement', { fg = p.blue })
   hi('Conditional', { fg = p.yellow })
   hi('Repeat', { fg = p.yellow })
-  hi('Label', { fg = p.blue })
+  hi('Label', { fg = p.cyan })
   hi('Operator', { fg = p.white })
-  hi('Keyword', { fg = p.white })
+  hi('Keyword', { fg = p.blue })
   hi('Exception', { fg = p.red })
   hi('PreProc', { fg = p.green })
   hi('Include', { fg = p.green })
@@ -114,63 +114,16 @@ local function apply_cromanomy()
   hi('StorageClass', { fg = p.blue })
   hi('Structure', { fg = p.blue })
   hi('Typedef', { fg = p.blue })
-  hi('Special', { fg = p.white })
-  hi('SpecialChar', { fg = p.red })
-  hi('Delimiter', { fg = p.white })
-  hi('Debug', { fg = p.magenta })
+  hi('Special', { fg = p.magenta })
+  hi('SpecialChar', { fg = p.magenta })
+  hi('Delimiter', { fg = p.blue })
+  hi('Debug', { fg = p.red })
   hi('Error', { fg = p.red, bold = true })
-  hi('Todo', { fg = p.yellow, bold = true })
+  hi('Todo', { fg = p.cyan, bold = true })
 
   -- ==========================================
   -- TREESITTER: EXECUTION RISK HIERARCHY
   -- ==========================================
-
-  -- VIM
-  -- RED: Vimscript Halts
-  -- Targeting 'return' and exceptions specifically from the scm
-  hi('@keyword.exception', { fg = p.red })
-
-  -- GREEN: Vimscript Triggers
-  -- Most Vim commands are tagged as generic @keyword in this scm.
-  -- We must force them to Green.
-  hi('@keyword', { fg = p.green })
-  hi('@function.macro', { fg = p.green }) -- Catches (command_name)
-
-  -- BLUE: Structural Architecture
-  -- In this scm, 'function' and 'endfunction' are @keyword.function
-  hi('@keyword.function', { fg = p.blue })
-  hi('@module', { fg = p.blue }) -- Catches scopes like 'v:', 'l:', 's:'
-
-  -- WHITE: Inert Baseline
-  -- Since we moved @keyword to Green, we must ensure operators and punctuation
-  -- stay White so they don't turn into triggers.
-  hi('@operator', { fg = p.white })
-  hi('@punctuation.bracket', { fg = p.white })
-  hi('@punctuation.delimiter', { fg = p.white })
-
-  -- VIMDOC
-  -- VIMDOC ARCHITECTURE
-  -- Maps structural headings to Blue and active routing to Cyan
-  hi('@markup.heading', { fg = p.blue, bold = true }) -- h1, h2, h3 headers
-  hi('@label', { fg = p.cyan }) -- *tags* for internal jumping
-  hi('@markup.link', { fg = p.cyan }) -- |links| to other help topics
-  hi('@variable.parameter', { fg = p.cyan }) -- {arguments} in function signatures
-
-  -- VIMDOC EXECUTION TRIGGERS
-  -- Code examples and modelines are treated as active payloads
-  hi('@markup.raw', { fg = p.green }) -- `inline code` spans
-  hi('@markup.raw.block', { fg = p.green }) -- > indented code blocks
-  hi('@keyword.directive', { fg = p.green }) -- vim: modelines
-
-  -- VIMDOC SEMANTIC RISK HIERARCHY
-  -- Maps diagnostic notes to their respective risk levels
-  hi('@comment.hint', { fg = p.black, italic = true }) -- Note: (Passive context)
-  hi('@comment.warning', { fg = p.yellow, bold = true }) -- Warning: (Branching risk)
-  hi('@comment.error', { fg = p.red, bold = true }) -- Deprecated: (Execution halt)
-
-  -- INERT CONTEXT
-  hi('@string.special.url', { fg = p.black }) -- Recedes raw URLs
-
   -- RED: Halts, Errors, Hard Stops
   hi('@keyword.return', { fg = p.red })
   hi('@keyword.exception', { fg = p.red })
@@ -180,20 +133,15 @@ local function apply_cromanomy()
   -- YELLOW: Redirections, Branches, Routes
   hi('@keyword.conditional', { fg = p.yellow })
   hi('@keyword.repeat', { fg = p.yellow })
-  hi('@character.special', { fg = p.yellow })
   hi('@markup.strong', { fg = p.yellow, bold = true })
   hi('@markup.italic', { fg = p.yellow, italic = true })
 
-  -- GREEN: Triggers, Injections
+  -- GREEN: Triggers, Injections, Mutations
   hi('@function.call', { fg = p.green })
   hi('@function.method.call', { fg = p.green })
   hi('@function.macro', { fg = p.green })
   hi('@keyword.import', { fg = p.green })
   hi('@keyword.directive', { fg = p.green })
-  hi('@function.call', { fg = p.green })
-  hi('@function.method.call', { fg = p.green })
-  hi('@function.builtin', { fg = p.green })
-  hi('@keyword.import', { fg = p.green })
   hi('@function.builtin', { fg = p.green })
   hi('@command', { fg = p.green })
   hi('@command.builtin', { fg = p.green })
@@ -201,6 +149,7 @@ local function apply_cromanomy()
   hi('@markup.raw.block', { fg = p.green })
 
   -- BLUE: Structural Architecture
+  hi('@keyword', { fg = p.blue })
   hi('@function', { fg = p.blue })
   hi('@function.method', { fg = p.blue })
   hi('@type', { fg = p.blue })
@@ -210,40 +159,42 @@ local function apply_cromanomy()
   hi('@class', { fg = p.blue })
   hi('@module', { fg = p.blue })
   hi('@keyword.modifier', { fg = p.blue })
-  hi('@string.regexp', { fg = p.blue })
-  hi('@tag', { fg = p.blue })
-  hi('@tag.delimiter', { fg = p.blue })
-  hi('@keyword.function', { fg = p.blue }) -- Catches `def` and `function`
+  hi('@keyword.function', { fg = p.blue })
   hi('@keyword.coroutine', { fg = p.blue })
   hi('@keyword.local', { fg = p.blue })
   hi('@keyword.declaration', { fg = p.blue })
+  hi('@punctuation', { fg = p.blue })
+  hi('@punctuation.bracket', { fg = p.blue })
+  hi('@punctuation.delimiter', { fg = p.blue })
+  hi('@punctuation.special', { fg = p.blue })
+  hi('@tag', { fg = p.blue })
+  hi('@tag.delimiter', { fg = p.blue })
   hi('@markup.heading', { fg = p.blue, bold = true })
   hi('@markup.list', { fg = p.blue })
   hi('@markup.quote', { fg = p.blue })
 
-  -- MAGENTA: Core Primitives
+  -- MAGENTA: Exceptional Data
   hi('@boolean', { fg = p.magenta })
   hi('@constant.builtin', { fg = p.magenta })
-  hi('@variable.builtin', { fg = p.magenta })
+  hi('@string.escape', { fg = p.magenta })
+  hi('@string.regexp', { fg = p.magenta })
+  hi('@character.special', { fg = p.magenta })
 
   -- CYAN: Ephemeral State
   hi('@variable', { fg = p.cyan })
   hi('@variable.parameter', { fg = p.cyan })
   hi('@variable.member', { fg = p.cyan })
+  hi('@variable.builtin', { fg = p.cyan })
   hi('@property', { fg = p.cyan })
   hi('@tag.attribute', { fg = p.cyan })
   hi('@markup.link.label', { fg = p.cyan })
+  hi('@label', { fg = p.cyan })
 
   -- WHITE: Inert Baseline
   hi('@string', { fg = p.white })
-  hi('@string.regexp', { fg = p.white })
-  hi('@string.escape', { fg = p.white })
   hi('@number', { fg = p.white })
   hi('@float', { fg = p.white })
   hi('@operator', { fg = p.white })
-  hi('@punctuation', { fg = p.white })
-  hi('@punctuation.bracket', { fg = p.white })
-  hi('@punctuation.delimiter', { fg = p.white })
   hi('@symbol', { fg = p.white })
   hi('@string.special.symbol', { fg = p.white })
   hi('@string.special', { fg = p.white })

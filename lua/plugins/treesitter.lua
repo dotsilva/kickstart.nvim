@@ -11,6 +11,7 @@ return {
       'diff',
       'dockerfile',
       'editorconfig',
+      'ecma',
       'embedded_template',
       'git_config',
       'git_rebase',

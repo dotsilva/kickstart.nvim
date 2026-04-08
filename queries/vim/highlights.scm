@@ -1,3 +1,0 @@
-;; extends
-
-"return" @keyword.return
