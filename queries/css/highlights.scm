@@ -1,6 +1,26 @@
 ;; queries/css/highlights.scm
 ;; extends
 
+
+;; BLUE
+[
+  "#"
+  ","
+  "."
+  ":"
+  "::"
+  ";"
+] @punctuation.delimiter
+
+[
+  "{"
+  ")"
+  "("
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
+
 ;; GREEN: Triggers & Mutations
 (function_name) @function.builtin
 
@@ -52,24 +72,6 @@
 (id_name) @tag
 (namespace_name) @module
 
-[
-  "#"
-  ","
-  "."
-  ":"
-  "::"
-  ";"
-] @punctuation.delimiter
-
-[
-  "{"
-  ")"
-  "("
-  "}"
-  "["
-  "]"
-] @punctuation.bracket
-
 ;; CYAN: Ephemeral State
 [
   (property_name)
@@ -96,7 +98,7 @@
 
 ;; MAGENTA: Exceptional Data
 (important) @constant.builtin
-(universal_selector) @character.special
+(universal_selector "*" @character.special)
 
 ;; WHITE: Generic Data
 [
@@ -107,3 +109,4 @@
 
 (integer_value) @number
 (float_value) @number.float
+(plain_value) @string
