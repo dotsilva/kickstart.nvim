@@ -1,15 +1,6 @@
 ;; queries/bash/highlights.scm
 ;; extends
 
-;; RED: Halts & Exceptions
-[
-  "break"
-  "continue"
-  "exit"
-  "return"
-  "kill"
-] @keyword.exception
-
 ;; GREEN: Triggers & Mutations
 (command_name (word) @function.builtin)
 
@@ -28,6 +19,10 @@
 (binary_expression operator: [ "+" "-" "*" "/" "%" ] @function.builtin)
 (unary_expression operator: [ "+" "-" ] @function.builtin)
 (postfix_expression operator: [ "++" "--" ] @function.builtin)
+
+;; RED: Halts & Exceptions
+((command_name (word) @keyword.exception)
+  (#any-of? @keyword.exception "break" "continue" "exit" "return" "kill"))
 
 ;; YELLOW: Routing & Logic
 [
