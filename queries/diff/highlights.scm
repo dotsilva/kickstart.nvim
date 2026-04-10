@@ -19,31 +19,28 @@
 (location) @keyword.conditional
 
 ;; BLUE: Structure & Definition
-(filename) @module
-
 [
-  (binary_change)
+  (index)
   (file_change)
-] @keyword.function
-
-(index "index" @keyword.function)
-
-([
-  ".."
-  "+"
-  "++"
-  "+++"
-  "++++"
-  "-"
-  "--"
-  "---"
-  "----"
-] @punctuation.special
-  (#set! priority 95))
+  (similarity)
+  (binary_change)
+] @keyword
 
 ;; CYAN: Ephemeral State
-(commit) @variable.builtin
-(command (argument) @variable.parameter)
+(commit) @property
+(command (argument) @property)
+(filename) @property
+
+;; Catch 'commit <hash>' lines (which the parser treats as generic context)
+((context) @property
+  (#match? @property "^commit "))
+
+;; Optional: Do the same for Author and Date if you want them Cyan
+((context) @property
+  (#match? @property "^Author: "))
+
+((context) @property
+  (#match? @property "^Date: "))
 
 ;; WHITE: Generic Data
 (mode) @number
@@ -51,8 +48,6 @@
 (similarity
   (score) @number
   "%" @operator)
-  
-(similarity) @keyword.function
 
 ;; BLACK: Comments
 (comment) @comment @spell
