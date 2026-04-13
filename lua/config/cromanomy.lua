@@ -85,6 +85,8 @@ local function apply_cromanomy()
   hi('DiffDelete', { fg = p.black, bg = p.bg_sub })
   hi('DiffText', { fg = p.bg_main, bg = p.black })
 
+  hi('DiagnosticUnnecessary', { sp = p.yellow, undercurl = true })
+
   -- ==========================================
   -- STANDARD SYNTAX FALLBACKS
   -- ==========================================
