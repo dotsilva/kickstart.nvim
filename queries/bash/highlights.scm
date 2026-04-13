@@ -1,133 +1,85 @@
 ;; queries/bash/highlights.scm
 ;; extends
 
-;; BLUE
-;; Punctuation
-[
-  "("
-  ")"
-  "{"
-  "}"
-  "["
-  "]"
-  "[["
-  "]]"
-  "(("
-  "))"
-] @punctuation.bracket
+;; ==========================================
+;; 1. BROAD FALLBACKS (Lowest Priority)
+;; ==========================================
+;; Assume all command arguments are Generic Data (WHITE) by default
+(command argument: (word) @string)
+(case_item value: (word) @string)
+(declaration_command (word) @string)
 
-[
-  ";"
-  ";;"
-  ";&"
-  ";;&"
-  "&"
-] @punctuation.delimiter
+;; ==========================================
+;; 2. SPECIFIC OVERRIDES (Higher Priority)
+;; ==========================================
+;; Shell Flags (-rf) override generic arguments to BLUE
+(command argument: (word) @keyword.modifier (#lua-match? @keyword.modifier "^%-+"))
 
-;; GREEN: Triggers & Mutations
+;; Globs (*.tmp) override generic arguments to MAGENTA
+(command argument: (word) @string.regexp (#lua-match? @string.regexp "[%*%?]"))
+((word) @string.regexp (#lua-match? @string.regexp "[%*%?]"))
+
+;; Variable Assignment LHS (error_count=0) overrides to CYAN
+(variable_assignment name: _ @variable)
+(declaration_command (variable_assignment name: _ @variable))
+
+;; Function Definition Names (process_stream) override to BLUE
+(function_definition name: (word) @function)
+
+;; ==========================================
+;; 3. STRUCTURE & DEFINITION (BLUE)
+;; ==========================================
+[ "(" ")" "{" "}" "[" "]" "[[" "]]" "((" "))" ] @punctuation.bracket
+[ ";" ";;" ";&" ";;&" "&" ] @punctuation.delimiter
+
+[ "declare" "typeset" "readonly" "local" "unset" "unsetenv" "export" "function" ] @keyword.function
+
+[ (heredoc_start) (heredoc_end) ] @keyword.function
+
+[ "=" "+=" ] @keyword.modifier
+(variable_assignment "=" @keyword.modifier)
+(variable_assignment "+=" @keyword.modifier)
+
+(test_operator) @keyword.modifier
+
+;; ==========================================
+;; 4. ROUTING & LOGIC (YELLOW)
+;; ==========================================
+[ "if" "then" "else" "elif" "fi" "case" "in" "esac" ] @keyword.conditional
+[ "for" "do" "done" "select" "until" "while" ] @keyword.repeat
+[ ">" ">>" "<" "<<" "&&" "|" "|&" "||" "=~" "==" "!=" "&>" "&>>" "<&" ">&" ">|" "<&-" ">&-" "<<-" "<<<" "!" ] @keyword.conditional
+
+(binary_expression operator: [ "==" "!=" "<" ">" "<=" ">=" ] @keyword.conditional)
+(unary_expression operator: "!" @keyword.conditional)
+
+;; ==========================================
+;; 5. TRIGGERS & MUTATIONS (GREEN)
+;; ==========================================
 (command_name (word) @function.builtin)
-
-;; Command & Process substitutions are execution triggers
 (command_substitution "$(" @function.builtin ")" @function.builtin)
 (command_substitution "`" @function.builtin "`" @function.builtin)
 (process_substitution [ "<(" ">(" ] @function.builtin ")" @function.builtin)
 (arithmetic_expansion [ "$((" "((" ] @function.builtin "))" @function.builtin)
 (arithmetic_expansion "," @function.builtin)
 
-;; String Evaluation/Interpolation Execution
 (simple_expansion "$" @function.builtin)
 (expansion "${" @function.builtin "}" @function.builtin)
 
-;; Math Operators
 (binary_expression operator: [ "+" "-" "*" "/" "%" ] @function.builtin)
 (unary_expression operator: [ "+" "-" ] @function.builtin)
 (postfix_expression operator: [ "++" "--" ] @function.builtin)
 
-;; RED: Halts & Exceptions
+;; ==========================================
+;; 6. HALTS & EXCEPTIONS (RED) (Overrides Green)
+;; ==========================================
 ((command_name (word) @keyword.exception)
   (#any-of? @keyword.exception "break" "continue" "exit" "return" "kill"))
 
-;; YELLOW: Routing & Logic
-[
-  "if"
-  "then"
-  "else"
-  "elif"
-  "fi"
-  "case"
-  "in"
-  "esac"
-] @keyword.conditional
-
-[
-  "for"
-  "do"
-  "done"
-  "select"
-  "until"
-  "while"
-] @keyword.repeat
-
-;; Routing/Logic operators
-[
-  ">"
-  ">>"
-  "<"
-  "<<"
-  "&&"
-  "|"
-  "|&"
-  "||"
-  "=~"
-  "=="
-  "!="
-  "&>"
-  "&>>"
-  "<&"
-  ">&"
-  ">|"
-  "<&-"
-  ">&-"
-  "<<-"
-  "<<<"
-  "!"
-] @keyword.conditional
-
-(binary_expression operator: [ "==" "!=" "<" ">" "<=" ">=" ] @keyword.conditional)
-(unary_expression operator: "!" @keyword.conditional)
-
-;; BLUE: Structure & Definition
-[
-  "declare"
-  "typeset"
-  "readonly"
-  "local"
-  "unset"
-  "unsetenv"
-  "export"
-  "function"
-] @keyword.function
-
-;; Shell Flags
-(command argument: (word) @keyword.modifier (#lua-match? @keyword.modifier "^%-"))
-
-;; Test operators inside [[ ]] and [ ] (e.g., -f, -z, -d)
-(test_operator) @keyword.modifier
-
-;; Assignment
-[ "=" "+=" ] @keyword.modifier
-(variable_assignment "=" @keyword.modifier)
-(variable_assignment "+=" @keyword.modifier)
-
-;; Heredoc boundaries
-[ (heredoc_start) (heredoc_end) ] @keyword.function
-
-;; CYAN: Ephemeral State
+;; ==========================================
+;; 7. EPHEMERAL STATE / BUILTINS (CYAN)
+;; ==========================================
 (special_variable_name) @variable.builtin
 (variable_name) @variable
-(command argument: (word) @variable.parameter)
-(case_item value: (word) @variable.parameter)
-(declaration_command (word) @variable.parameter)
 
 ((variable_name) @variable.builtin
   (#any-of? @variable.builtin
@@ -146,5 +98,8 @@
     "READLINE_ARGUMENT" "READLINE_LINE" "READLINE_MARK" "READLINE_POINT" "REPLY" "SECONDS" "SHELL"
     "SHELLOPTS" "SHLVL" "SRANDOM" "TIMEFORMAT" "TMOUT" "TMPDIR" "UID"))
 
-;; MAGENTA: Exceptional Data
+;; ==========================================
+;; 8. EXCEPTIONAL DATA (MAGENTA)
+;; ==========================================
 [ (regex) (extglob_pattern) ] @string.regexp
+
