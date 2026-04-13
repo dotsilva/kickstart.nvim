@@ -33,11 +33,12 @@
   "MAINTAINER"
   "CROSS_BUILD"
 ] @keyword.function
-
-[
-  (heredoc_marker)
-  (heredoc_end)
-] @keyword.function
+;; BLUE: Structure & Definition
+;; Override base parser's @label (priority 100) for BuildKit heredocs
+((heredoc_marker) @keyword.function (#set! priority 105))
+((heredoc_end) @keyword.function (#set! priority 105))
+;; Add to BLUE: Structure & Definition
+[ "[" "]" "," ] @punctuation.bracket
 
 [
   ":"
@@ -66,10 +67,6 @@
     (unquoted_string) @variable))
 
 (variable) @variable
-
-;; MAGENTA: Exceptional Data
-((variable) @constant.builtin
-  (#lua-match? @constant.builtin "^[A-Z][A-Z_0-9]*$"))
 
 ;; WHITE: Generic Data
 (double_quoted_string) @string
