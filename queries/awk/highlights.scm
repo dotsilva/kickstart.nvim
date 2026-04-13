@@ -34,3 +34,4 @@
   (#any-of? @variable.builtin
     "ARGC" "ARGV" "ARGIND" "ENVIRON" "ERRNO" "FILENAME" "FNR" "NF" "FUNCTAB" "NR" "PROCINFO"
     "RLENGTH" "RSTART" "RT" "SYMTAB"))
+(field_ref "$" @variable.builtin)
