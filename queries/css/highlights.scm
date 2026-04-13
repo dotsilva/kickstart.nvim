@@ -24,31 +24,25 @@
 ;; GREEN: Triggers & Mutations
 (function_name) @function.builtin
 
-[
-  "+"
-  "-"
-  "*"
-  "/"
-] @function.builtin
+;; Math operators inside calc() or similar functions
+(binary_expression [ "+" "-" "*" "/" ] @function.builtin)
 
 ;; YELLOW: Routing & Logic
-[
-  "~"
-  ">"
-  "="
-  "^="
-  "|="
-  "~="
-  "$="
-  "*="
-] @keyword.conditional
-
 [
   "and"
   "or"
   "not"
   "only"
 ] @keyword.conditional
+
+;; Selector Combinators (Routing)
+(child_selector ">" @keyword.conditional)
+(sibling_selector "~" @keyword.conditional)
+(adjacent_sibling_selector "+" @keyword.conditional)
+(namespace_selector "|" @keyword.conditional)
+
+;; Attribute Query Logic
+(attribute_selector [ "=" "^=" "|=" "~=" "$=" "*=" ] @keyword.conditional)
 
 ;; BLUE: Structure & Definition
 [
@@ -110,3 +104,7 @@
 (integer_value) @number
 (float_value) @number.float
 (plain_value) @string
+
+;; BLACK: Comments
+(comment) @comment @spell
+(js_comment) @comment @spell
