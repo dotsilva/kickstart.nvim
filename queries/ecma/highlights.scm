@@ -60,10 +60,8 @@
 
 [
   "import"
-  "require"
   "from"
   "as"
-  "export"
 ] @keyword.import
 
 ((identifier) @function.builtin

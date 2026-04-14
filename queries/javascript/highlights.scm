@@ -1,6 +1,5 @@
+;; extends
 ;; queries/javascript/highlights.scm
-;; inherits: ecma,jsx
-
 ;; RED: Halts & Exceptions
 [
   "break"
@@ -36,10 +35,11 @@
   "--"
 ] @function.builtin
 
-[
-  "import"
-  "require"
-] @keyword.import
+"import" @keyword.import
+
+((call_expression
+  function: (identifier) @keyword.import)
+  (#eq? @keyword.import "require"))
 
 ;; YELLOW: Routing & Logic
 [
@@ -117,13 +117,13 @@
 
 ;; MAGENTA: Exceptional Data
 [
-  "true"
-  "false"
+  (true)
+  (false)
 ] @boolean
 
 [
-  "null"
-  "undefined"
+  (null)
+  (undefined)
 ] @constant.builtin
 
 (regex) @string.regexp
@@ -183,3 +183,29 @@
 
 ;; BLACK: Comments
 (comment) @comment @spell
+
+;; recent fixes
+((method_definition
+  name: (property_identifier) @keyword.function)
+  (#eq? @keyword.function "constructor"))
+
+(call_expression
+  function: (super)
+  arguments: (arguments
+    "(" @function.builtin
+    ")" @function.builtin))
+
+((template_substitution
+  "${" @function.builtin
+  "}" @function.builtin)
+  (#set! priority 110))
+
+"typeof" @keyword.modifier
+
+((regex "/") @string.regexp (#set! priority 110))
+
+((identifier) @constant.builtin
+  (#eq? @constant.builtin "NaN")
+  (#set! priority 110))
+
+"delete" @keyword.exception
