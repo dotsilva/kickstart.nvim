@@ -1,6 +1,4 @@
-;; queries/ruby/highlights.scm
 ;; extends
-
 ;; RED: Halts & Exceptions
 [
   "return"
@@ -10,10 +8,6 @@
 [
   "rescue"
   "ensure"
-  "raise"
-  "fail"
-  "catch"
-  "throw"
   "break"
   "next"
 ] @keyword.exception
