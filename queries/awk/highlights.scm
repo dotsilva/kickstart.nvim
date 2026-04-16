@@ -1,4 +1,3 @@
-;; queries/awk/highlights.scm
 ;; extends
 
 ;; RED: Halts & Exceptions
