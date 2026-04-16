@@ -1,5 +1,3 @@
-;; queries/c/highlights.scm
-
 ;; RED: Halts & Exceptions
 [
   "return"
