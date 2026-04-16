@@ -1,9 +1,8 @@
-;; queries/html/highlights.scm
 ;; extends
 
 ;; BLUE: Structure & Definition
 (doctype) @tag
-"<!" @tag.delimiter
+"<!" @punctuation.bracket
 
 ;; MAGENTA: Exceptional Data
 (entity) @character.special
