@@ -1,4 +1,3 @@
-;; queries/gitignore/highlights.scm
 ;; extends
 
 ;; YELLOW: Routing & Logic
@@ -16,6 +15,10 @@
   (directory_separator_escaped)
 ] @punctuation.delimiter
 
+;; CYAN: Ephemeral State & References
+(pattern_char) @property
+(bracket_char) @property
+
 ;; MAGENTA: Exceptional Data
 [
   (wildcard_char_single)
@@ -32,10 +35,6 @@
   "-" @character.special)
 
 (bracket_char_class) @constant.builtin
-
-;; WHITE: Generic Data
-(pattern_char) @string
-(bracket_char) @string
 
 ;; BLACK: Comments
 (comment) @comment @spell
