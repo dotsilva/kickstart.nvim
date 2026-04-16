@@ -1,5 +1,3 @@
-;; queries/bash/injections.scm
-
 ;; AWK & JQ
 ((command
   name: (command_name (word) @injection.language)

@@ -1,4 +1,3 @@
-;; queries/bash/highlights.scm
 ;; extends
 
 ;; ==========================================
