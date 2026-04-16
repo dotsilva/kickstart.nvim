@@ -1,4 +1,3 @@
-;; queries/git_rebase/highlights.scm
 ;; extends
 
 ;; RED: Halts & Deletions
@@ -7,23 +6,23 @@
 
 ;; GREEN: Triggers & Mutations
 ((command) @function.builtin
-  (#any-of? @function.builtin "p" "pick" "r" "reword" "e" "edit" "s" "squash" "f" "fixup" "x" "exec" "m" "merge"))
+  (#any-of? @function.builtin "p" "pick" "r" "reword" "e" "edit" "s" "squash" "f" "fixup" "x" "exec" "m" "merge" "u" "update-ref"))
 
 ;; YELLOW: Routing & Logic
 ((command) @keyword.conditional
   (#any-of? @keyword.conditional "t" "reset"))
 
+(option) @keyword.conditional
+
 ;; BLUE: Structure & Definition
 ((command) @keyword.function
   (#any-of? @keyword.function "l" "label"))
 
-(option) @keyword.modifier
-
-;; CYAN: Ephemeral State
-(label) @variable.builtin
+;; CYAN: Ephemeral State & References
+(label) @property
 
 ;; WHITE: Generic Data
 (message) @string @spell
 
 ;; BLACK: Comments
-(comment) @comment
+(comment) @comment @spell
