@@ -1,4 +1,3 @@
-;; queries/http/highlights.scm
 ;; extends
 
 ;; RED: Halts, Exceptions & Deletions
@@ -10,21 +9,26 @@
   (#any-of? @function.builtin "POST" "PUT" "PATCH"))
 
 ;; BLUE: Structure & Definition
+((comment
+  name: (_)) @keyword.declaration
+  (#set! priority 105))
+
+((comment
+  name: (_) @keyword.function)
+  (#set! priority 110))
+
+((comment
+  "=" @punctuation.delimiter)
+  (#set! priority 120))
+
 (header
   name: (_) @tag)
-
-(comment
-  "=" @keyword.modifier)
 
 (variable_declaration
   "=" @keyword.modifier)
 
 (variable_declaration
   "@" @keyword.modifier)
-
-(comment
-  "@" @keyword.modifier
-  name: (_) @keyword.function)
 
 [
   "{{"
@@ -38,6 +42,11 @@
 
 ">" @punctuation.delimiter
 
+(request_separator) @punctuation.delimiter
+
+(res_handler_script 
+  ">" @punctuation.delimiter)
+
 ;; CYAN: Ephemeral State
 ((method) @variable.builtin
   (#any-of? @variable.builtin "GET" "HEAD" "OPTIONS" "TRACE" "CONNECT"))
@@ -45,6 +54,10 @@
 (identifier) @variable
 
 ;; WHITE: Generic Data
+((comment
+  value: (_) @string)
+  (#set! priority 110))
+
 (request
   url: (_) @string)
 
@@ -63,7 +76,7 @@
   path: (_) @string)
 
 ;; BLACK: Comments
-[
-  (comment)
-  (request_separator)
-] @comment @spell
+
+;; YELLOW: Routing & Logic (Redirections)
+;; Global capture ensures it catches the token regardless of AST nesting
+"<" @keyword.conditional
