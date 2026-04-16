@@ -10,7 +10,7 @@ local function apply_cromanomy()
   local p = {
     bg_main = '#1e1e1e',
     bg_sub = '#363636',
-    black = '#9e9e9e',
+    black = '#8A8A8A',
     red = '#F34E4E',
     yellow = '#cfcf2a',
     green = '#36db36',
