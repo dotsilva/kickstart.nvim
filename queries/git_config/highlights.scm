@@ -1,31 +1,57 @@
-;; queries/git_config/highlights.scm
 ;; extends
+
+;; ==========================================
+;; GENERIC FALLBACKS 
+;; ==========================================
+
+;; WHITE: Generic Data
+(string) @string
+(integer) @number
+
+;; BLUE: Structure & Definition
+(section_name) @markup.heading
+(subsection_name) @module
+(variable
+  (name) @tag)
+
+"=" @punctuation.delimiter
+
+[
+  "["
+  "]"
+  "\""
+] @punctuation.bracket
+
+;; ==========================================
+;; SPECIFIC OVERRIDES 
+;; ==========================================
+
+;; GREEN: Triggers & Mutations
+((section_name) @keyword.import
+  (#any-of? @keyword.import "include" "includeif"))
+
+(shell_command) @function.builtin
 
 ;; YELLOW: Routing & Logic
 ((section_name) @keyword.conditional
   (#any-of? @keyword.conditional "includeIf" "includeif"))
 
-;; BLUE: Structure & Definition
-(section_name) @markup.heading
+;; CYAN: Ephemeral State & References
+((string) @property
+  (#lua-match? @property "^[.]?[.]?[/]"))
 
-((section_name) @keyword.function
-  (#eq? @keyword.function "include"))
+((string) @property
+  (#lua-match? @property "^[~]"))
 
-(variable
-  (name) @tag)
+((variable
+  (name) @_name
+  value: (string) @property)
+  (#any-of? @_name "path" "url" "insteadOf" "insteadof" "fetch" "push"))
 
-"=" @keyword.modifier
-
-(section_header
-  [
-    "\""
-    (subsection_name)
-  ] @module)
-
-[
-  "["
-  "]"
-] @punctuation.bracket
+((section_header
+  (section_name) @_name
+  (subsection_name) @property)
+  (#any-of? @_name "credential" "url" "includeIf" "includeif"))
 
 ;; MAGENTA: Exceptional Data
 [
@@ -34,26 +60,6 @@
 ] @boolean
 
 (escape_sequence) @string.escape
-
-;; WHITE: Generic Data
-(string) @string
-(integer) @number
-
-((string) @string
-  (#lua-match? @string "^[.]?[.]?[/]"))
-
-((string) @string
-  (#lua-match? @string "^[~]"))
-
-((section_header
-  (section_name) @_name
-  (subsection_name) @string)
-  (#any-of? @_name "credential" "url"))
-
-((variable
-  (name) @_name
-  value: (string) @string)
-  (#any-of? @_name "insteadOf" "insteadof"))
 
 ;; BLACK: Comments
 (comment) @comment @spell
