@@ -2,7 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate',
-  commit = '90cd6580e720caedacb91fdd587b747a6e77d61f',
+  branch = 'main',
   config = function()
     local parsers = {
       'awk',
