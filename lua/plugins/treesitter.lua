@@ -19,6 +19,7 @@ return {
       'gitcommit',
       'gitignore',
       'gpg',
+      'glsl',
       'html',
       'html_tags',
       'http',
