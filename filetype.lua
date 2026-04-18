@@ -4,5 +4,6 @@ vim.filetype.add {
     gitcommit = 'gitcommit',
     gitconfig = 'gitconfig',
     gitrebase = 'gitrebase',
+    hyprlang = 'hyprlang',
   },
 }
