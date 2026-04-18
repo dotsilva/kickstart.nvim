@@ -1,16 +1,19 @@
 ;; extends
 
-;; ==========================================
 ;; 1. BROAD FALLBACKS (Lowest Priority)
-;; ==========================================
 ;; Assume all command arguments are Generic Data (WHITE) by default
 (command argument: (word) @string)
 (case_item value: (word) @string)
 (declaration_command (word) @string)
 
-;; ==========================================
+;; Commands inside wrappers (Axiom 1)
+(command
+  name: (command_name (word) @_cmd)
+  (#match? @_cmd "^(uwsm-app|omarchy-launch-tui)$")
+  argument: (word) @function.builtin
+  (#not-match? @function.builtin "^-"))
+
 ;; 2. SPECIFIC OVERRIDES (Higher Priority)
-;; ==========================================
 ;; Shell Flags (-rf) override generic arguments to BLUE
 (command argument: (word) @keyword.modifier (#lua-match? @keyword.modifier "^%-+"))
 
