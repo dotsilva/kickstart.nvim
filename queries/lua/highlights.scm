@@ -1,4 +1,3 @@
-;; queries/lua/highlights.scm
 ;; extends
 
 ;; RED: Halts & Exceptions
