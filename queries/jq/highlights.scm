@@ -1,5 +1,8 @@
-;; queries/jq/highlights.scm
 ;; extends
+
+;; ==========================
+;; TOP: GENERAL RULES
+;; ==========================
 
 ;; RED: Halts & Exceptions
 [
@@ -7,9 +10,6 @@
   "try"
   "catch"
 ] @keyword.exception
-
-((funcname) @keyword.exception
-  (#any-of? @keyword.exception "error" "halt" "halt_error"))
 
 ;; GREEN: Triggers & Mutations
 (funcdef
@@ -32,18 +32,14 @@
   "include"
 ] @keyword.import
 
-[
-  "\\("
-  ")"
-] @function.builtin
-
+;; Removed error/halt/halt_error from list
 ((funcname) @function.builtin
   (#any-of? @function.builtin
     "IN" "INDEX" "JOIN" "abs" "acos" "acosh" "add" "all" "any" "arrays" "ascii_downcase"
     "ascii_upcase" "asin" "asinh" "atan" "atan2" "atanh" "booleans" "bsearch" "builtins" "capture"
     "cbrt" "ceil" "combinations" "contains" "copysign" "cos" "cosh" "debug" "del" "delpaths" "drem"
     "empty" "endswith" "env" "erf" "erfc" "exp" "exp10" "exp2" "explode" "expm1" "fabs"
-    "fdim" "finites" "first" "flatten" "floor" "fma" "fmax" "fmin" "fmod" "format" "frexp"
+    "fdim" "finites" "first" "flatten" "floor" "fma" "fmax" "fmin" "fmod" "frexp"
     "from_entries" "fromdate" "fromdateiso8601" "fromjson" "fromstream" "gamma" "get_jq_origin"
     "get_prog_origin" "get_search_list" "getpath" "gmtime" "group_by" "gsub" "has" "hypot"
     "implode" "in" "index" "indices" "infinite" "input" "input_filename" "input_line_number"
@@ -81,7 +77,7 @@
   "?"
   "//"
   "?//"
-  (recurse) ; ".."
+  (recurse)
 ] @keyword.conditional
 
 [
@@ -108,13 +104,13 @@
   "/="
   "%="
   "//="
+  "|="
 ] @keyword.modifier
 
 [
   ";"
   ","
   ":"
-  "."
 ] @punctuation.delimiter
 
 [
@@ -126,13 +122,16 @@
   ")"
 ] @punctuation.bracket
 
+(objectkey (identifier) @tag)
+(objectkeyval (string) @tag)
+(constobjectkeyval (identifier) @tag)
+
 ;; CYAN: Ephemeral State
 (variable) @variable
 (funcdefargs (identifier) @variable.parameter)
 (index (identifier) @property)
 (query label: (variable) @label)
 (query break_statement: (variable) @label)
-(format) @property
 
 ((variable) @variable.builtin
   (#eq? @variable.builtin "$ENV"))
@@ -154,3 +153,26 @@
 
 ;; BLACK: Comments
 (comment) @comment @spell
+
+;; ==========================
+;; BOTTOM: OVERRIDES (Max Priority)
+;; ==========================
+
+;; RED: Halts (Override massive list)
+((funcname) @keyword.exception
+  (#any-of? @keyword.exception "error" "halt" "halt_error")
+  (#set! priority 250))
+
+;; GREEN: Formats (@csv, @tsv, etc)
+((format) @function.builtin
+  (#set! priority 250))
+
+;; GREEN: String Interpolation Bounds
+(string_interp
+  "\\(" @function.builtin
+  ")" @function.builtin
+  (#set! priority 250))
+
+;; BLUE: Dot Structural
+("." @punctuation.delimiter
+  (#set! priority 250))
