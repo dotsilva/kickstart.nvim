@@ -34,15 +34,13 @@
 (function_call (identifier) @keyword.function (#eq? @keyword.function "module"))
 
 ((identifier) @module
-  (#any-of? @module "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8" "coroutine"))
+  (#any-of? @module "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8" "coroutine" "vim" "api" "hl" "fn" "g" "o" "opt" "opt_local" "bo" "wo" "keymap" "diagnostic" "uv" "loop" "health"))
 
 [ ";" ":" "::" "," "." ] @punctuation.delimiter
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
 
 (function_declaration name: [ (identifier) @function (dot_index_expression field: (identifier) @function) ])
 (function_declaration name: (method_index_expression method: (identifier) @function.method))
-(assignment_statement (variable_list name: [ (identifier) @function (dot_index_expression field: (identifier) @function) ]) (expression_list value: (function_definition)))
-(table_constructor (field name: (identifier) @function value: (function_definition)))
 
 ;; Structural scope bounds
 (function_declaration "end" @keyword.function)
