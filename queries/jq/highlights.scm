@@ -32,7 +32,6 @@
   "include"
 ] @keyword.import
 
-;; Removed error/halt/halt_error from list
 ((funcname) @function.builtin
   (#any-of? @function.builtin
     "IN" "INDEX" "JOIN" "abs" "acos" "acosh" "add" "all" "any" "arrays" "ascii_downcase"
@@ -161,18 +160,22 @@
 ;; RED: Halts (Override massive list)
 ((funcname) @keyword.exception
   (#any-of? @keyword.exception "error" "halt" "halt_error")
-  (#set! priority 250))
+  (#set! priority 300))
 
 ;; GREEN: Formats (@csv, @tsv, etc)
 ((format) @function.builtin
-  (#set! priority 250))
+  (#set! priority 300))
 
 ;; GREEN: String Interpolation Bounds
 (string_interp
   "\\(" @function.builtin
   ")" @function.builtin
-  (#set! priority 250))
+  (#set! priority 300))
 
 ;; BLUE: Dot Structural
 ("." @punctuation.delimiter
-  (#set! priority 250))
+  (#set! priority 300))
+
+;; BLUE: Quotes Scaffolding
+("\"" @punctuation.bracket
+  (#set! priority 300))
