@@ -1,4 +1,3 @@
-;; queries/xcompose/highlights.scm
 ;; extends
 
 ;; GREEN: Triggers & Mutations

@@ -1,6 +1,4 @@
-;; queries/css/highlights.scm
 ;; extends
-
 
 ;; BLUE
 [

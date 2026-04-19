@@ -1,4 +1,3 @@
-;; queries/vim/highlights.scm
 ;; extends
 
 ;; RED: Halts & Exceptions

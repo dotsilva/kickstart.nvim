@@ -1,4 +1,3 @@
-;; queries/json/highlights.scm
 ;; extends
 
 ;; BLUE: Structure & Definition

@@ -1,4 +1,3 @@
-;; queries/sql/highlights.scm
 ;; extends
 
 ;; RED: Halts, Exceptions & Destructive Operations

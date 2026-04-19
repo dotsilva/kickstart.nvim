@@ -1,4 +1,3 @@
-;; queries/nginx/highlights.scm
 ;; extends
 
 ;; RED: Halts & Exceptions

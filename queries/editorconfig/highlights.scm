@@ -1,4 +1,3 @@
-;; queries/editorconfig/highlights.scm
 ;; extends
 
 ;; YELLOW: Routing & Logic

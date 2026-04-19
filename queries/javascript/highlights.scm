@@ -1,5 +1,5 @@
 ;; extends
-;; queries/javascript/highlights.scm
+
 ;; RED: Halts & Exceptions
 [
   "break"

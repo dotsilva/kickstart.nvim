@@ -1,4 +1,3 @@
-;; queries/toml/highlights.scm
 ;; extends
 
 ;; BLUE: Structure & Definition

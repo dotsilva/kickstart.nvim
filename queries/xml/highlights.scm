@@ -1,4 +1,3 @@
-;; queries/xml/highlights.scm
 ;; extends
 
 ;; GREEN: Triggers & Mutations

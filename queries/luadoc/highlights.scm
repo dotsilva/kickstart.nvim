@@ -1,4 +1,3 @@
-;; queries/luadoc/highlights.scm
 ;; extends
 
 ;; YELLOW: Routing & Logic

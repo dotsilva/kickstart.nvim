@@ -1,4 +1,3 @@
-;; queries/markdown/highlights.scm
 ;; extends
 
 ;; GREEN: Triggers & Mutations

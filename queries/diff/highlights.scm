@@ -1,4 +1,3 @@
-;; queries/diff/highlights.scm
 ;; extends
 
 ;; RED: Halts, Exceptions & Deletions

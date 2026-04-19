@@ -1,4 +1,3 @@
-;; queries/tmux/highlights.scm
 ;; extends
 
 ;; RED: Halts & Exceptions

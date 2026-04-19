@@ -1,4 +1,3 @@
-;; queries/ssh_config/highlights.scm
 ;; extends
 
 ;; GREEN: Triggers & Mutations

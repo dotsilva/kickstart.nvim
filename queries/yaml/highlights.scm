@@ -1,4 +1,3 @@
-;; queries/yaml/highlights.scm
 ;; extends
 
 ;; GREEN: Triggers & Mutations
