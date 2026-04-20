@@ -1,8 +1,15 @@
 ;; extends
 
+;; WHITE: Generic Data
+(string_content) @string
+(number) @number
+
 ;; BLUE: Structure & Definition
+"\"" @punctuation.bracket
+
 (pair
-  key: (string) @tag)
+  key: (string
+    (string_content) @tag)) ; Maps to BLUE via theme @tag
 
 [
   ","
@@ -25,15 +32,6 @@
 (null) @constant.builtin
 
 (escape_sequence) @string.escape
-
-;; WHITE: Generic Data
-(pair
-  value: (string) @string)
-
-(array
-  (string) @string)
-
-(number) @number
 
 ;; BLACK: Comments
 (comment) @comment @spell
