@@ -205,7 +205,7 @@ local function apply_cromanomy()
   hi('@comment', { fg = p.black, italic = true })
   hi('@comment.documentation', { fg = p.black, italic = true })
   hi('@markup.link.url', { fg = p.black, italic = true })
-
+  hi('@comment.luadoc', { fg = p.black, bold = true })
   -- ==========================================
   -- COVENANT DASHBOARD
   -- ==========================================
