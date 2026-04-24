@@ -5,5 +5,6 @@ vim.filetype.add {
     gitconfig = 'gitconfig',
     gitrebase = 'gitrebase',
     hyprlang = 'hyprlang',
+    nginx = 'nginx',
   },
 }
