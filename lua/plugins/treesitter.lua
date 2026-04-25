@@ -35,7 +35,6 @@ return {
       'markdown',
       'markdown_inline',
       'nginx',
-      'odin',
       'query',
       'regex',
       'ruby',
@@ -48,6 +47,7 @@ return {
       'xcompose',
       'xml',
       'yaml',
+      'zig',
     }
     require('nvim-treesitter').install(parsers)
     vim.api.nvim_create_autocmd('FileType', {
