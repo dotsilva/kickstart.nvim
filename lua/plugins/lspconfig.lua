@@ -3,8 +3,7 @@ return {
   dependencies = {
     {
       'mason-org/mason.nvim',
-      -- Merged from zzcovenant.lua
-      opts = { ui = { border = 'single' } },
+      opts = { ui = { border = vim.g.strong_border } },
     },
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -69,9 +68,8 @@ return {
     })
 
     local servers = {
-      ruby_lsp = {},
       bashls = {},
-      html = { filetypes = { 'html', 'eruby' } },
+      html = { filetypes = { 'html' } },
       stylua = {},
       jsonls = {},
       yamlls = {},
@@ -109,13 +107,10 @@ return {
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'rubocop',
-      'erb-formatter',
       'shfmt',
       'shellcheck',
       'luacheck',
       'yamlfmt',
-      'markdownlint',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }

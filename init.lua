@@ -11,7 +11,7 @@ require 'config.keymaps'
 require 'config.autocmds'
 require 'config.dashboard'
 require 'config.health'
-require 'config.chromanomy'
+require 'config.karpos'
 
 -- 3. Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -28,7 +28,7 @@ require('lazy').setup({
   { import = 'plugins' },
 }, {
   ui = {
-    border = 'single',
+    border = vim.g.strong_border,
     -- Evaluates vim.g.have_nerd_font (which you will define in config.options)
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',

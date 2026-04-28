@@ -1,13 +1,9 @@
 local custom_ui = {
   popup = {
-    border = {
-      style = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
-    },
+    border = { style = vim.g.strong_border },
   },
   input = {
-    border = {
-      style = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
-    },
+    border = { style = vim.g.strong_border },
   },
 }
 

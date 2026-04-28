@@ -39,7 +39,7 @@ return {
         { mode = 'n', keys = 'gr', desc = '+LSP Actions' },
       },
       window = {
-        config = { border = 'single' },
+        config = { border = vim.g.strong_border },
         delay = 0,
       },
     }

@@ -1,7 +1,7 @@
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
-vim.g.covenant_border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' }
+vim.g.strong_border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' }
 
 vim.o.termguicolors = true
 vim.opt.guicursor = 'n-v-c-i:block-blinkon0'
@@ -34,7 +34,7 @@ vim.o.confirm = true
 vim.diagnostic.config {
   update_in_insert = false,
   severity_sort = true,
-  float = { border = 'single', source = 'if_many' },
+  float = { border = vim.g.strong_border, source = 'if_many' },
   underline = { severity = { min = vim.diagnostic.severity.WARN } },
   virtual_text = true,
   virtual_lines = false,

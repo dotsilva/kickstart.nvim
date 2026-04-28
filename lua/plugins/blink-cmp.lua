@@ -29,7 +29,7 @@ return {
       nerd_font_variant = 'mono',
     },
     completion = {
-      menu = { border = 'single' },
+      menu = { border = vim.g.strong_border },
       documentation = {
         auto_show = false,
         auto_show_delay_ms = 500,

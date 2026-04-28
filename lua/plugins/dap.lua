@@ -16,7 +16,6 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    'suketa/nvim-dap-ruby',
     'jbyuki/one-small-step-for-vimkind',
   },
   keys = {
@@ -74,7 +73,7 @@ return {
           disconnect = '⏏',
         },
       },
-      floating = { border = 'single' },
+      floating = { border = vim.g.strong_border },
     }
 
     -- Covenant Breakpoint Colors (Using TJ's full state machine)
@@ -95,10 +94,7 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- 1. RUBY
-    require('dap-ruby').setup()
-
-    -- 2. LUA (Neovim specifically)
+    -- LUA (Neovim specifically)
     dap.adapters.nlua = function(callback, config) callback { type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 } end
     dap.configurations.lua = {
       {
