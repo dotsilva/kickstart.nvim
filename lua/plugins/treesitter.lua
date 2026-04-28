@@ -7,12 +7,9 @@ return {
     local parsers = {
       'awk',
       'bash',
-      'c',
       'css',
-      'disassembly',
       'diff',
       'dockerfile',
-      'embedded_template',
       'ecma',
       'editorconfig',
       'git_config',
@@ -31,11 +28,10 @@ return {
       'json',
       'lua',
       'luadoc',
-      'make',
+      'luap',
       'markdown',
       'markdown_inline',
       'nginx',
-      'odin',
       'query',
       'regex',
       'sql',
@@ -45,7 +41,6 @@ return {
       'vim',
       'vimdoc',
       'xcompose',
-      'xml',
       'yaml',
     }
     require('nvim-treesitter').install(parsers)
