@@ -1,5 +1,7 @@
--- For of Him, and through Him, and unto Him, are all things.
--- To Him be the glory for ever. Amen. - Romans 11:36 ASV 1901
+--[[
+For of Him, and through Him, and unto Him, are all things.
+To Him be the glory for ever. Amen. - Romans 11:36 ASV 1901
+  ]]
 
 -- 1. Leader keys MUST be set before anything else, or plugins bind to the wrong key
 vim.g.mapleader = ' '
@@ -24,11 +26,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- 4. Execute the package manager
 require('lazy').setup({
+
   -- Automatically sweep and load everything in lua/custom/plugins/
   { import = 'plugins' },
 }, {
   ui = {
     border = vim.g.strong_border,
+
     -- Evaluates vim.g.have_nerd_font (which you will define in config.options)
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
