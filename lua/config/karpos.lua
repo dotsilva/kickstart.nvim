@@ -1,8 +1,9 @@
 vim.cmd 'hi clear'
 if vim.fn.exists 'syntax_on' then vim.cmd 'syntax reset' end
 vim.g.colors_name = 'karpos'
+vim.o.background = 'dark'
 
--- The internal palette
+-- color palette
 local p = {
   bg0 = '#1E1E1E',
   bg1 = '#2A2A2A',
@@ -59,18 +60,24 @@ hi('Pmenu', { fg = p.black, bg = p.bg1 })
 hi('PmenuSel', { fg = p.bg1, bg = p.black, bold = true })
 hi('PmenuSbar', { bg = p.bg0 })
 hi('PmenuThumb', { bg = p.black })
-hi('StatusLine', { fg = p.black, bg = p.bg1 })
+hi('StatusLine', { fg = p.black, bg = p.bg1, bold = true })
 hi('StatusLineNC', { fg = p.black, bg = p.bg0 })
 hi('TabLine', { fg = p.black, bg = p.bg1 })
 hi('TabLineFill', { fg = p.black, bg = p.bg0 })
 hi('TabLineSel', { fg = p.black, bg = p.bg0, bold = true })
 hi('Title', { fg = p.black, bold = true })
 hi('Visual', { bg = p.bg1 })
-hi('Search', { fg = p.bg0, bg = p.magenta }) -- Searching is Signaling
+hi('Search', { fg = p.bg0, bg = p.magenta })
 hi('IncSearch', { fg = p.bg0, bg = p.magenta })
 hi('MatchParen', { fg = p.bg0, bg = p.black, bold = true })
 hi('Directory', { fg = p.black, bold = true })
 hi('MsgArea', { fg = p.black, bg = p.bg0 })
+
+-- Confirmations, Warnings, and Prompts
+hi('Question', { fg = p.yellow, bold = true })
+hi('WarningMsg', { fg = p.yellow, bold = true })
+hi('MoreMsg', { fg = p.yellow, bold = true })
+hi('ErrorMsg', { fg = p.red, bold = true, bg = p.bg1 })
 
 -- Strict Blue Borders
 hi('FloatBorder', { fg = p.blue, bg = p.bg1 })
@@ -79,7 +86,7 @@ hi('FloatTitle', { fg = p.black, bg = p.bg1, bold = true })
 -- ==========================================
 -- PHASE C: DIAGNOSTICS & VCS
 -- ==========================================
--- Diagnostics Text (Monochrome fallback, rely strictly on underlines)
+-- Diagnostics Text
 hi('DiagnosticError', { fg = p.red, bg = p.bg1, bold = true, italic = true })
 hi('DiagnosticWarn', { fg = p.yellow, bg = p.bg1, bold = true, italic = true })
 hi('DiagnosticInfo', { fg = p.black, bg = p.bg1, bold = true, italic = true })
@@ -89,34 +96,35 @@ hi('DiagnosticVirtualTextWarn', { fg = p.yellow, bg = p.bg1, bold = true, italic
 hi('DiagnosticVirtualTextInfo', { fg = p.black, bg = p.bg1, bold = true, italic = true })
 hi('DiagnosticVirtualTextHint', { fg = p.black, bg = p.bg1, bold = true, italic = true })
 
--- Diagnostics Underlines (Red for High, Yellow for Low)
+-- Diagnostics
 hi('DiagnosticUnderlineError', { sp = p.red, undercurl = true })
 hi('DiagnosticUnderlineWarn', { sp = p.yellow, undercurl = true })
 hi('DiagnosticUnderlineInfo', { sp = p.black, undercurl = true })
 hi('DiagnosticUnderlineHint', { sp = p.black, undercurl = true })
 hi('DiagnosticUnnecessary', { sp = p.black, undercurl = true })
 
--- Diff States (Working = Green, Stopping = Red)
+-- Diff States
 hi('DiffAdd', { fg = p.green, bg = p.bg0, bold = true, italic = true })
 hi('DiffChange', { fg = p.yellow, bg = p.bg0, bold = true, italic = true })
 hi('DiffDelete', { fg = p.red, bg = p.bg0, bold = true, italic = true })
 hi('DiffText', { fg = p.bg0, bg = p.yellow, bold = true, italic = true })
 
 -- ==========================================
--- PHASE D: TREESITTER (THE 4 AXIOMS)
+-- PHASE D: TREESITTER
 -- ==========================================
--- 1. Execution (Working vs Referencing)
+-- green - working
 hi('@function.call', { fg = p.green })
 hi('@method.call', { fg = p.green })
 hi('@operator', { fg = p.green })
 
+-- cyan referencing
 hi('@variable', { fg = p.cyan })
 hi('@variable.parameter', { fg = p.cyan })
 hi('@variable.member', { fg = p.cyan })
 hi('@property', { fg = p.cyan })
 hi('@module', { fg = p.cyan })
 
--- 2. Architecture (Defining vs Routing)
+-- blue - defining
 hi('@function', { fg = p.blue })
 hi('@method', { fg = p.blue })
 hi('@type', { fg = p.blue })
@@ -126,24 +134,27 @@ hi('@keyword.return', { fg = p.blue })
 hi('@punctuation.bracket', { fg = p.blue })
 hi('@punctuation.delimiter', { fg = p.blue })
 
+-- yellow - routing
 hi('@keyword.conditional', { fg = p.yellow })
 hi('@keyword.repeat', { fg = p.yellow })
 hi('@keyword.exception', { fg = p.yellow })
 
--- 3. Data (Signaling vs Saying)
+-- magenta - signaling
 hi('@boolean', { fg = p.magenta })
 hi('@constant.builtin', { fg = p.magenta })
 hi('@character.special', { fg = p.magenta })
 hi('@string.escape', { fg = p.magenta })
 
+-- white - saying
 hi('@string', { fg = p.white })
 hi('@number', { fg = p.white })
 hi('@float', { fg = p.white })
 hi('@character', { fg = p.white })
 
--- 4. Terminal (Stopping vs Commenting)
+-- red - stopping
 hi('@keyword.directive', { fg = p.red })
 
+-- black - commenting
 hi('@comment', { fg = p.black, italic = true })
 hi('@comment.documentation', { fg = p.black, italic = true })
 hi('@spell', { fg = p.black, italic = true })
@@ -172,7 +183,7 @@ hi('Error', { fg = p.red, bold = true })
 hi('Todo', { fg = p.cyan, bold = true })
 
 -- ==========================================
--- PHASE F: PLUGIN UI OVERRIDES
+-- PHASE F: PLUGINS
 -- ==========================================
 hi('CovenantDashboardSeparator', { fg = p.bg1 })
 hi('CovenantDashboardVerse', { fg = p.black, bold = true })
