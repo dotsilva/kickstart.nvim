@@ -33,7 +33,7 @@ return {
       documentation = {
         auto_show = false,
         auto_show_delay_ms = 500,
-        window = { border = 'single' },
+        window = { border = vim.g.strong_border },
       },
     },
     sources = {
@@ -41,6 +41,6 @@ return {
     },
     snippets = { preset = 'luasnip' },
     fuzzy = { implementation = 'lua' },
-    signature = { enabled = true, window = { border = 'single' } },
+    signature = { enabled = true, window = { border = vim.g.strong_border } },
   },
 }

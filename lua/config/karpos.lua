@@ -14,7 +14,7 @@ local p = {
   blue = '#7E7EFF',
   magenta = '#E742E7',
   cyan = '#38D5D5',
-  white = '#D2D2D2',
+  white = '#E0E0E0',
 }
 
 local function hi(group, opts) vim.api.nvim_set_hl(0, group, opts) end
@@ -80,7 +80,7 @@ hi('MoreMsg', { fg = p.yellow, bold = true })
 hi('ErrorMsg', { fg = p.red, bold = true, bg = p.bg1 })
 
 -- Strict Blue Borders
-hi('FloatBorder', { fg = p.blue, bg = p.bg1 })
+hi('FloatBorder', { fg = p.blue, bg = p.bg1, bold = true })
 hi('FloatTitle', { fg = p.black, bg = p.bg1, bold = true })
 
 -- ==========================================

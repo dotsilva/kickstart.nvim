@@ -10,6 +10,7 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
+    require('lspconfig.ui.windows').default_options.border = vim.g.strong_border
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -28,12 +29,16 @@ return {
         map('gO', pick_lsp 'document_symbol', 'Open Document Symbols')
         map('gW', pick_lsp 'workspace_symbol', 'Open Workspace Symbols')
         map('grt', pick_lsp 'type_definition', '[G]oto [T]ype Definition')
-
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+        -- strong borders
+        map('K', function() vim.lsp.buf.hover { border = vim.g.strong_border } end, 'Hover', 'n')
+        map('<C-k>', function() vim.lsp.buf.signature_help { border = vim.g.strong_border } end, 'Signature', 'i')
+
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+
         -- KILL SEMANTIC TOKENS
         -- Forces Neovim to strictly rely on Tree-sitter for highlighting
         if client then client.server_capabilities.semanticTokensProvider = nil end
@@ -70,7 +75,6 @@ return {
     local servers = {
       bashls = {},
       html = { filetypes = { 'html' } },
-      stylua = {},
       jsonls = {},
       yamlls = {},
       cssls = {},
@@ -107,9 +111,10 @@ return {
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      'luacheck',
       'shfmt',
       'shellcheck',
-      'luacheck',
+      'stylua',
       'yamlfmt',
     })
 

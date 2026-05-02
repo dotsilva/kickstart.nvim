@@ -38,5 +38,6 @@ vim.diagnostic.config {
   underline = { severity = { min = vim.diagnostic.severity.WARN } },
   virtual_text = true,
   virtual_lines = false,
-  jump = { float = true },
+  -- Replace: jump = { float = true }
+  jump = { on_jump = function() vim.diagnostic.open_float() end },
 }

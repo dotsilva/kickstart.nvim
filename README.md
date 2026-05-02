@@ -1,7 +1,7 @@
 
-# Chromanomy
+# karpos.nvim
 
-* This is the specification for the syntax highlight in Chromanomy neovim theme, using an operational approach it assigns colors to elements based on what they do instead of their grammatical identity.
+* This is the specification for the syntax highlight in karpos.nvim neovim theme, using an operational approach it assigns colors to elements based on what they do instead of their grammatical identity.
 
 ## The 4 Axioms of Operational Syntax
 
