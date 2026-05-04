@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
       vim.bo[buf].bufhidden = 'wipe'
       vim.bo[buf].swapfile = false
 
-      vim.bo[buf].filetype = 'covenant_dashboard'
+      vim.bo[buf].filetype = 'dashboard'
 
       -- Kill the tildes at the bottom & hide line numbers
       vim.opt_local.fillchars:append 'eob: '
@@ -80,7 +80,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
       vim.bo[buf].modifiable = false
 
       -- Create a dedicated namespace for the dashboard engine
-      local ns = vim.api.nvim_create_namespace 'covenant_dashboard'
+      local ns = vim.api.nvim_create_namespace 'dashboard'
 
       -- THE COVENANT STATE MACHINE
       local current_zone = 'none'
@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
         -- Rule 1 & 3: Separators (3 or more '=' or '-') dictate our zone
         if line:match '===+' then
-          hl_group = 'CovenantDashboardSeparator'
+          hl_group = 'DashboardSeparator'
           equals_count = equals_count + 1
 
           -- If it's the first '===', we are entering the Verse zone
@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
             current_zone = 'title'
           end
         elseif line:match '%-%-%-+' then
-          hl_group = 'CovenantDashboardSeparator'
+          hl_group = 'DashboardSeparator'
           -- When we hit '---', we enter the Paths zone
           current_zone = 'paths'
 
@@ -110,11 +110,11 @@ vim.api.nvim_create_autocmd('VimEnter', {
         -- We use line:match("%S") to ensure we only highlight lines that actually have text, ignoring blank spacer lines
         elseif line:match '%S' then
           if current_zone == 'verse' then
-            hl_group = 'CovenantDashboardVerse'
+            hl_group = 'DashboardVerse'
           elseif current_zone == 'title' then
-            hl_group = 'CovenantDashboardTitle'
+            hl_group = 'DashboardTitle'
           elseif current_zone == 'paths' then
-            hl_group = 'CovenantDashboardPath'
+            hl_group = 'DashboardPath'
           end
         end
 

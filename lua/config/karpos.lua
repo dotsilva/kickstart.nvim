@@ -190,10 +190,10 @@ hi('Todo', { fg = p.cyan, bold = true })
 -- ==========================================
 -- PHASE F: PLUGINS
 -- ==========================================
-hi('CovenantDashboardSeparator', { fg = p.bg1 })
-hi('CovenantDashboardVerse', { fg = p.black, bold = true })
-hi('CovenantDashboardTitle', { fg = p.blue, bold = true })
-hi('CovenantDashboardPath', { fg = p.cyan })
+hi('DashboardSeparator', { fg = p.bg1 })
+hi('DashboardVerse', { fg = p.black, bold = true })
+hi('DashboardTitle', { fg = p.blue, bold = true })
+hi('DashboardPath', { fg = p.cyan })
 
 hi('FidgetTitle', { fg = p.blue, bg = p.bg0, bold = true })
 hi('FidgetTask', { fg = p.black, bg = p.bg0 })
