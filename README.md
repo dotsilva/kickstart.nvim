@@ -3,21 +3,12 @@
 
 * This is the specification for the syntax highlight in karpos.nvim neovim theme, using an operational approach it assigns colors to elements based on what they do instead of their grammatical identity.
 
-## The 4 Axioms of Operational Syntax
-
-**1. The Execution Axis: Working (Green) vs Referencing (Cyan)**
-* *Green (To Work):* Actions that permanently alter state, execute processes, burn CPU cycles, or write to disk. (Function calls, mutations, triggers).
-* *Cyan (To Reference):* Elements that passively link to memory, fetch existing state, or act as inert pointers to data. (Variable usage, object properties being read, parameters).
-
-**2. The Architecture Axis: Defining (Blue) vs Routing (Yellow)**
-* *Blue (To Define):* Elements that build structural scaffolding, declare types, establish boundaries, or shape data containers. (Brackets, class/variable declarations, type definitions).
-* *Yellow (To Route):* Elements that actively dictate, branch, or loop the path of execution through that defined architecture. (If/else, switch, loops, quantifiers).
-
-**3. The Data Axis: Signaling (Magenta) vs Saying (White)**
-* *Magenta (To Signal):* Elements that alert the compiler to exceptional states, system-level overrides, or unprintable/special constants. (Escape characters, boolean keywords like `true`/`false`, decorators, `null`).
-* *White (To Say):* The literal, raw, inert data the program is actively communicating. (Standard numbers, literal text strings).
-
-**4. The Terminal Axis: Stopping (Red) vs Commenting (Black)**
-* *Red (To Stop):* Commands that actively kill the current execution path, throw errors, or force an immediate exit. (Return, throw, break, exceptions).
-* *Black (To Comment):* Elements that are entirely moot, structurally ignored by the compiler, and exist only as passive human notes. (Comments, docstrings).
-
+## The Axioms of Operational Syntax
+* *Green (To Work):* Elements that mutate, execute processes or write to disk (function/method calls, mutations, triggers, commands, etc).
+* *Cyan (To Reference):* Elements that passively link to memory or act as inert pointers to data like placeholders (e.g. calling a variable, calling json key through jq, links, file paths, etc).
+* *Blue (To Define):* Elements that build structural scaffolding, establish boundaries, define abstractions (structural punctuation, class/variable declarations, type definitions, function/method/variable definitions, etc).
+* *Yellow (To Route):* Elements that actively dictate flow, fork or loop the path of execution through that defined architecture (``if``, ``else``, ``switch``, loops, quantifiers, etc).
+* *Magenta (To Signal):* Special data that alert the compiler/interpreter to exceptional states (escape characters, boolean values, `null`, etc).
+* *White (To Say):* Arbitrary literal normal data (standard numbers, literal text strings, etc).
+* *Red (To Stop):* Commands that stop or pause code execution, either of the whole program or just some code block/line within it (``break``, ``await``, etc).
+* *Black (To Comment):* Elements that are moot, structurally ignored by the compiler/interpreter, and exist only as passive human notes, even stuff like luadoc (comments, docstrings, etc).
