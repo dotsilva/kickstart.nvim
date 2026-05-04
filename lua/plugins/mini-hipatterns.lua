@@ -71,7 +71,7 @@ return {
         rgb_color = { pattern = 'rgba?%(%s*%d+%s*,%s*%d+%s*,%s*%d+[^%)]*%)', group = compute_rgb },
         hsl_color = { pattern = 'hsla?%(%s*%d+%s*,%s*%d+%%%s*,%s*%d+%%[^%)]*%)', group = compute_hsl },
 
-        -- Covenant TODO Comments (Replaces todo-comments.nvim)
+        --  TODO Comments (Replaces todo-comments.nvim)
         fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
         hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
         todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
@@ -83,11 +83,10 @@ return {
     -- Crucial: Enable True Color or none of this math matters
     vim.opt.termguicolors = true
 
-    -- Enforce Covenant Base16 colors for your semantic tags
-    vim.api.nvim_set_hl(0, 'MiniHipatternsFixme', { fg = '#0C0C0C', bg = '#F34E4E', bold = true }) -- Red
-    vim.api.nvim_set_hl(0, 'MiniHipatternsHack', { fg = '#0C0C0C', bg = '#cfcf2a', bold = true }) -- Yellow
-    vim.api.nvim_set_hl(0, 'MiniHipatternsTodo', { fg = '#0C0C0C', bg = '#38d5d5', bold = true }) -- Cyan
-    vim.api.nvim_set_hl(0, 'MiniHipatternsNote', { fg = '#0C0C0C', bg = '#7e7eff', bold = true }) -- Blue
+    -- Enforce colors for your semantic tags
+    vim.api.nvim_set_hl(0, 'MiniHipatternsFix', { fg = '#1E1E1E', bg = '#F34E4E', bold = true }) -- Red
+    vim.api.nvim_set_hl(0, 'MiniHipatternsHack', { fg = '#1E1E1E', bg = '#cfcf2a', bold = true }) -- Yellow
+    vim.api.nvim_set_hl(0, 'MiniHipatternsTodo', { fg = '#1E1E1E', bg = '#38d5d5', bold = true }) -- Cyan
 
     require('mini.hipatterns').setup(opts)
   end,
