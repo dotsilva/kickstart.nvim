@@ -1,6 +1,7 @@
 return {
   'stevearc/oil.nvim',
   dependencies = {}, -- Zero dependencies. No icons. Pure logic.
+  lazy = false,
   keys = {
     { '<leader>o', function() require('oil').toggle_float() end, desc = 'Open Oil (Current File)' },
     { '<leader>O', function() require('oil').toggle_float(vim.uv.cwd()) end, desc = 'Open Oil (CWD)' },
