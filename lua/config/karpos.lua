@@ -44,19 +44,19 @@ vim.g.terminal_color_15 = p.white
 -- ==========================================
 -- Base Text & Backgrounds
 hi('Normal', { fg = p.black, bg = p.bg0 })
-hi('NormalFloat', { fg = p.black, bg = p.bg1 })
+hi('NormalFloat', { fg = p.black, bg = p.bg0 })
 hi('NormalNC', { fg = p.black, bg = p.bg0 })
 hi('ColorColumn', { bg = p.bg1 })
 hi('CursorColumn', { bg = p.bg1 })
-hi('CursorLine', { bg = p.bg1, sp = p.red })
-hi('CursorLineNr', { fg = p.black, bg = p.bg1 })
+hi('CursorLine', { bg = p.bg1 })
+hi('CursorLineNr', { fg = p.black, bg = p.bg1, underdouble = true })
 hi('LineNr', { fg = p.black, bg = p.bg1 })
 hi('SignColumn', { fg = p.black, bg = p.bg1 })
 hi('FoldColumn', { fg = p.black, bg = p.bg1 })
 hi('VertSplit', { fg = p.bg1, bg = p.bg0 })
 hi('WinSeparator', { fg = p.bg1, bg = p.bg0 })
 hi('EndOfBuffer', { fg = p.bg0, bg = p.bg0 })
-hi('Pmenu', { fg = p.black, bg = p.bg1 })
+hi('Pmenu', { fg = p.black, bg = p.bg0 })
 hi('PmenuSel', { fg = p.bg1, bg = p.cyan, bold = true })
 hi('PmenuSbar', { bg = p.bg0 })
 hi('PmenuThumb', { bg = p.black })
@@ -80,8 +80,8 @@ hi('MoreMsg', { fg = p.yellow, bold = true })
 hi('ErrorMsg', { fg = p.red, bold = true, bg = p.bg1 })
 
 -- Strict Blue Borders
-hi('FloatBorder', { fg = p.blue, bg = p.bg1, bold = true })
-hi('FloatTitle', { fg = p.black, bg = p.bg1, bold = true })
+hi('FloatBorder', { fg = p.blue, bg = p.bg0, bold = true })
+hi('FloatTitle', { fg = p.black, bg = p.bg0, bold = true })
 
 -- ==========================================
 -- PHASE C: DIAGNOSTICS & VCS
@@ -199,17 +199,17 @@ hi('MiniDiffSignChange', { fg = p.yellow, bg = p.bg1 })
 hi('MiniDiffSignDelete', { fg = p.red, bg = p.bg1 })
 
 -- Mini Files (Strict Blue Borders)
-hi('MiniFilesNormal', { fg = p.black, bg = p.bg1 })
+hi('MiniFilesNormal', { fg = p.black, bg = p.bg0 })
 hi('MiniFilesBorder', { fg = p.blue })
-hi('MiniFilesTitle', { fg = p.black, bg = p.bg1, bold = true })
+hi('MiniFilesTitle', { fg = p.black, bg = p.bg0, bold = true })
 hi('MiniFilesTitleFocused', { fg = p.bg0, bg = p.cyan, bold = true })
-hi('MiniFilesCursorLine', { bg = 'NONE', underdouble = true, sp = p.black })
+hi('MiniFilesCursorLine', { bg = p.bg1, sp = p.black })
 
 -- Mini Pick (Strict Blue Borders)
-hi('MiniPickNormal', { fg = p.black, bg = p.bg1 })
+hi('MiniPickNormal', { fg = p.black, bg = p.bg0 })
 hi('MiniPickBorder', { fg = p.blue })
-hi('MiniPickPrompt', { fg = p.black, bg = p.bg1 })
-hi('MiniPickMatchCurrent', { bg = 'NONE', underdouble = true, sp = p.black })
+hi('MiniPickPrompt', { fg = p.black, bg = p.bg0 })
+hi('MiniPickMatchCurrent', { bg = p.bg1, sp = p.black })
 hi('MiniPickMatchRanges', { fg = p.cyan, bold = true })
 
 -- Mini Statusline
@@ -223,8 +223,8 @@ hi('MiniStatuslineDevinfo', { fg = p.black, bg = p.bg1 })
 hi('MiniStatuslineFilename', { fg = p.black, bg = p.bg1 })
 
 -- Mini Clue (Strict Blue Borders)
-hi('MiniClueNormal', { fg = p.black, bg = p.bg1 })
-hi('MiniClueBorder', { fg = p.blue, bg = p.bg1 })
+hi('MiniClueNormal', { fg = p.black, bg = p.bg0 })
+hi('MiniClueBorder', { fg = p.blue, bg = p.bg0 })
 hi('MiniClueTitle', { fg = p.blue })
 hi('MiniClueNextKey', { fg = p.black })
 
@@ -233,18 +233,18 @@ hi('MiniIndentscopeSymbol', { fg = p.black })
 hi('MiniIndentscopeSymbolOff', { fg = p.bg0 })
 
 -- Blink CMP (Strict Blue Borders)
-hi('BlinkCmpMenu', { fg = p.black, bg = p.bg1 })
-hi('BlinkCmpMenuBorder', { fg = p.blue, bg = p.bg1 })
-hi('BlinkCmpMenuSelection', { fg = p.bg0, bg = p.cyan })
+hi('BlinkCmpMenu', { fg = p.black, bg = p.bg0 })
+hi('BlinkCmpMenuBorder', { fg = p.blue, bg = p.bg0 })
+hi('BlinkCmpMenuSelection', { fg = p.black, bg = p.bg1 })
 hi('BlinkCmpLabel', { fg = p.black })
 hi('BlinkCmpLabelMatch', { fg = p.magenta, bold = true })
 hi('BlinkCmpKind', { fg = p.cyan })
-hi('BlinkCmpDocBorder', { fg = p.blue, bg = p.bg1 })
-hi('BlinkCmpSignatureHelpBorder', { fg = p.blue, bg = p.bg1 })
+hi('BlinkCmpDocBorder', { fg = p.blue, bg = p.bg0 })
+hi('BlinkCmpSignatureHelpBorder', { fg = p.blue, bg = p.bg0 })
 
 -- Lazy & Mason
-hi('LazyNormal', { fg = p.black, bg = p.bg1 })
-hi('MasonNormal', { fg = p.black, bg = p.bg1 })
+hi('LazyNormal', { fg = p.black, bg = p.bg0 })
+hi('MasonNormal', { fg = p.black, bg = p.bg0 })
 
 -- DAP & Neotest
 hi('DapBreakpoint', { fg = p.red, bg = p.bg1 })
