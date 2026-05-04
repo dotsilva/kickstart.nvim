@@ -1,8 +1,6 @@
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
-vim.g.strong_border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' }
-
 vim.o.termguicolors = true
 vim.opt.guicursor = 'n-v-c-i:block-blinkon0'
 vim.o.number = true
@@ -27,14 +25,21 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
+vim.o.cursorcolumn = false
 vim.o.scrolloff = 10
 vim.o.confirm = true
+
+-- Indentation: 2 spaces, no tabs. The truth.
+vim.opt.tabstop = 2 -- Number of spaces a <Tab> counts for
+vim.opt.shiftwidth = 2 -- Size of an indent operation (>> or <<)
+vim.opt.expandtab = true -- Convert tabs to spaces automatically
+vim.opt.softtabstop = 2 -- Treat 2 spaces as a tab when deleting/backspacing
 
 -- Diagnostic Config
 vim.diagnostic.config {
   update_in_insert = false,
   severity_sort = true,
-  float = { border = vim.g.strong_border, source = 'if_many' },
+  float = { border = 'double', source = 'if_many' },
   underline = { severity = { min = vim.diagnostic.severity.WARN } },
   virtual_text = true,
   virtual_lines = false,

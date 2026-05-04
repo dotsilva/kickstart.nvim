@@ -1,9 +1,9 @@
 local custom_ui = {
   popup = {
-    border = { style = vim.g.strong_border },
+    border = { style = 'double' },
   },
   input = {
-    border = { style = vim.g.strong_border },
+    border = { style = 'double' },
   },
 }
 

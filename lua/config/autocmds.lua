@@ -7,5 +7,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'MiniFilesWindowOpen',
-  callback = function(args) vim.api.nvim_win_set_config(args.data.win_id, { border = vim.g.strong_border }) end,
+  callback = function(args) vim.api.nvim_win_set_config(args.data.win_id, { border = 'double' }) end,
 })

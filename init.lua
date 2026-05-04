@@ -31,7 +31,7 @@ require('lazy').setup({
   { import = 'plugins' },
 }, {
   ui = {
-    border = vim.g.strong_border,
+    border = 'double',
 
     -- Evaluates vim.g.have_nerd_font (which you will define in config.options)
     icons = vim.g.have_nerd_font and {} or {

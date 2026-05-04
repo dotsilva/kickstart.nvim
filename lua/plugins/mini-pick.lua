@@ -16,7 +16,7 @@ return {
   },
   opts = {
     window = {
-      config = { border = vim.g.strong_border },
+      config = { border = 'double' },
     },
   },
   config = function(_, opts)

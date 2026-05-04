@@ -49,7 +49,7 @@ hi('NormalNC', { fg = p.black, bg = p.bg0 })
 hi('ColorColumn', { bg = p.bg1 })
 hi('CursorColumn', { bg = p.bg1 })
 hi('CursorLine', { bg = p.bg1 })
-hi('CursorLineNr', { fg = p.black, bg = p.bg1, underdouble = true })
+hi('CursorLineNr', { fg = p.black, bg = p.bg1, bold = true, italic = true })
 hi('LineNr', { fg = p.black, bg = p.bg1 })
 hi('SignColumn', { fg = p.black, bg = p.bg1 })
 hi('FoldColumn', { fg = p.black, bg = p.bg1 })
@@ -95,6 +95,11 @@ hi('DiagnosticVirtualTextError', { fg = p.red, bg = p.bg1, bold = true, italic =
 hi('DiagnosticVirtualTextWarn', { fg = p.yellow, bg = p.bg1, bold = true, italic = true })
 hi('DiagnosticVirtualTextInfo', { fg = p.black, bg = p.bg1, bold = true, italic = true })
 hi('DiagnosticVirtualTextHint', { fg = p.black, bg = p.bg1, bold = true, italic = true })
+
+--
+hi('LspReferenceText', { underline = true })
+hi('LspReferenceRead', { underline = true })
+hi('LspReferenceWrite', { underline = true })
 
 -- Diagnostics
 hi('DiagnosticUnderlineError', { sp = p.red, undercurl = true })
@@ -244,6 +249,7 @@ hi('BlinkCmpSignatureHelpBorder', { fg = p.blue, bg = p.bg0 })
 
 -- Lazy & Mason
 hi('LazyNormal', { fg = p.black, bg = p.bg0 })
+hi('LazyButtonActive', { bg = p.bg1, fg = p.black, bold = true })
 hi('MasonNormal', { fg = p.black, bg = p.bg0 })
 
 -- DAP & Neotest

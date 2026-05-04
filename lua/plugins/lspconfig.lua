@@ -3,14 +3,14 @@ return {
   dependencies = {
     {
       'mason-org/mason.nvim',
-      opts = { ui = { border = vim.g.strong_border } },
+      opts = { ui = { border = 'double' } },
     },
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
-    require('lspconfig.ui.windows').default_options.border = vim.g.strong_border
+    require('lspconfig.ui.windows').default_options.border = 'double'
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -34,8 +34,8 @@ return {
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- strong borders
-        map('K', function() vim.lsp.buf.hover { border = vim.g.strong_border } end, 'Hover', 'n')
-        map('<C-k>', function() vim.lsp.buf.signature_help { border = vim.g.strong_border } end, 'Signature', 'i')
+        map('K', function() vim.lsp.buf.hover { border = 'double' } end, 'Hover', 'n')
+        map('<C-k>', function() vim.lsp.buf.signature_help { border = 'double' } end, 'Signature', 'i')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 

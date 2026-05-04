@@ -29,11 +29,11 @@ return {
       nerd_font_variant = 'mono',
     },
     completion = {
-      menu = { border = vim.g.strong_border },
+      menu = { border = 'double' },
       documentation = {
         auto_show = false,
         auto_show_delay_ms = 500,
-        window = { border = vim.g.strong_border },
+        window = { border = 'double' },
       },
     },
     sources = {
@@ -41,6 +41,6 @@ return {
     },
     snippets = { preset = 'luasnip' },
     fuzzy = { implementation = 'lua' },
-    signature = { enabled = true, window = { border = vim.g.strong_border } },
+    signature = { enabled = true, window = { border = 'double' } },
   },
 }
