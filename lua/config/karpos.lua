@@ -6,8 +6,8 @@ vim.o.background = 'dark'
 -- color palette
 local p = {
   bg0 = '#1E1E1E',
-  bg1 = '#2A2A2A',
-  black = '#919191',
+  bg1 = '#303030',
+  black = '#979797',
   red = '#F34E4E',
   green = '#36DB36',
   yellow = '#CFCF2A',
@@ -48,8 +48,8 @@ hi('NormalFloat', { fg = p.black, bg = p.bg1 })
 hi('NormalNC', { fg = p.black, bg = p.bg0 })
 hi('ColorColumn', { bg = p.bg1 })
 hi('CursorColumn', { bg = p.bg1 })
-hi('CursorLine', { bg = 'NONE', underdouble = true, sp = p.black })
-hi('CursorLineNr', { fg = p.black, bg = p.bg1, underdouble = true })
+hi('CursorLine', { bg = p.bg1, sp = p.red })
+hi('CursorLineNr', { fg = p.black, bg = p.bg1 })
 hi('LineNr', { fg = p.black, bg = p.bg1 })
 hi('SignColumn', { fg = p.black, bg = p.bg1 })
 hi('FoldColumn', { fg = p.black, bg = p.bg1 })
